@@ -1,0 +1,13 @@
+{
+  "title":"从注意到理解","audience":"讲师、培训组织者与需要解释复杂主题的表达者","scenario":"教学与主题分享","tone":"克制、启发、证据导向","theme":"premium-lecture","imageCapabilityMode":"upload-slots","features":{"gesture":"off","presenterMode":true,"editable":true},
+  "slides":[
+    {"role":"cover","title":"从注意到理解","layout":"cover","theme":"premium-lecture","visibleContent":{"kicker":"BLACK & GOLD LECTURE / 01","title":"从注意到理解","subtitle":"一场关于复杂表达的八页讲堂"},"speakerNotes":"开场只交代问题：信息越来越多，理解却未必随之增加。"},
+    {"role":"question","title":"为什么内容越满，听众越难记住？","layout":"central-question","theme":"premium-lecture","visibleContent":{"question":"为什么内容越满，听众越难记住？","support":"理解需要停顿、关联与回看。"},"speakerNotes":"停顿两秒，再邀请听众回忆最近一次听完很多、只记住一句的经历。"},
+    {"role":"model","title":"理解不是接收，而是三次加工。","layout":"process-diagram","theme":"premium-lecture","visibleContent":{"heading":"理解不是接收，而是三次加工。","support":"每一步都需要一个可辨认的中心。演示数据用于说明结构，并非调查结论。","steps":["注意：先看见重点","连接：再放进已有经验","复述：最后用自己的话说出"]},"speakerNotes":"用三个动词讲清模型。"},
+    {"role":"evidence","title":"一个中心句，给内容留下入口","layout":"evidence-comparison","theme":"premium-lecture","visibleContent":{"dataLabel":"演示数据","series":[["中心句先行","78%"],["并列要点","54%"],["连续说明","31%"]]},"speakerNotes":"说明数据只用于课堂练习。"},
+    {"role":"explanation","title":"密度应该起伏，而非持续上升","layout":"curve","theme":"premium-lecture","visibleContent":{"heading":"密度应该起伏，而非持续上升。","support":"每一段高密度说明后，插入一页总结或一个问题，让听众完成内部整理。","labels":["提出","解释","停顿","收束"]},"speakerNotes":"曲线用来提醒讲者安排页面呼吸。"},
+    {"role":"thesis","title":"删掉的内容，会变成理解的空间","layout":"thesis","theme":"premium-lecture","visibleContent":{"statement":"删掉的内容，会变成理解的空间。","support":"重点不是说得更少，而是让每句话承担更清楚的任务。"},"speakerNotes":"不要补充新论据。"},
+    {"role":"action","title":"下一次讲述前，检查这三件事","layout":"action-list","theme":"premium-lecture","visibleContent":{"heading":"下一次讲述前，检查这三件事。","actions":["写下一句中心句：它应该能独立回答这一段究竟要让人记住什么。","让证据服务这句话：保留能改变判断的材料，删去只增加数量的材料。","安排一次停顿：用问题、空白页或复述，让听众参与整理。"]},"speakerNotes":"把清单说成下一次可做的小实验。"},
+    {"role":"closing","title":"让重点被看见","layout":"closing","theme":"premium-lecture","visibleContent":{"statement":"让重点被看见。","support":"清楚的表达，替听众保留了思考的位置。"},"speakerNotes":"结束后留白。"}
+  ]
+}

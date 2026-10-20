@@ -1,13 +1,14 @@
 {
   "name": "sense-deck-template-library",
   "version": "0.1.0",
-  "workflow": "Read this index first, generate content IR, then select a theme, a full deck or single-page layouts, and optional animations before writing content. For image-led pages, choose the relationship and actual image count before filling the composition slots.",
+  "workflow": "Read style-routing.json first: honor requested styles and existing deck continuity; for a new unspecified deck select a premium baseline by scenario. Generate content IR, copy a complete matching deck, then fill semantic layouts and optional assets.",
   "catalogs": {
     "themes": "themes/theme-catalog.json",
     "fullDecks": "full-decks/deck-catalog.json",
     "singlePageLayouts": "single-page-layouts/layout-catalog.json",
     "animations": "animations/animation-catalog.json",
-    "components": "components/component-catalog.json"
+    "components": "components/component-catalog.json",
+    "styleRouting": "style-routing.json"
   },
   "schemas": {
     "contentIr": "schemas/content-ir.schema.json",
@@ -26,7 +27,8 @@
     "lifecycleEvents": [
       "Reveal slidechanged",
       "deck:slidechange"
-    ]
+    ],
+    "premium": "full-decks/_shared/premium-runtime.js"
   },
   "exporters": {
     "html": "exporters/html",
@@ -53,7 +55,7 @@
     ]
   },
   "targetLibraryShape": {
-    "fullDecks": 20,
+    "fullDecks": 25,
     "singlePageLayouts": 42,
     "cssAnimations": 27,
     "canvasFx": 20
@@ -177,10 +179,8 @@
     {
       "id": "editorial-cinematic-paper",
       "path": "themes/editorial-cinematic-paper.css",
-      "defaultWhenUnspecified": true,
       "guide": "../docs/editorial-cinematic-paper-style.md",
       "bestFor": [
-        "unspecified visual style",
         "methodology report",
         "process explanation",
         "cinematic evidence board",
@@ -192,6 +192,125 @@
         "oxblood accent",
         "thin editorial grid",
         "low-key cinematic stills"
+      ]
+    },
+    {
+      "id": "premium-consulting",
+      "name": "咨询简报",
+      "status": "implemented",
+      "path": "themes/premium-consulting.css",
+      "family": "premium-baselines",
+      "defaultWhenUnspecified": true,
+      "guide": "../references/premium-baselines.md",
+      "bestFor": [
+        "consulting",
+        "research",
+        "business report",
+        "analysis",
+        "unspecified scenario"
+      ],
+      "visual": [
+        "white canvas",
+        "serif conclusions",
+        "terracotta accent",
+        "aligned evidence tables",
+        "thin rules"
+      ]
+    },
+    {
+      "id": "premium-lecture",
+      "name": "黑金讲堂",
+      "status": "implemented",
+      "path": "themes/premium-lecture.css",
+      "family": "premium-baselines",
+      "defaultWhenUnspecified": false,
+      "guide": "../references/premium-baselines.md",
+      "bestFor": [
+        "lecture",
+        "teaching",
+        "method explanation",
+        "professional talk"
+      ],
+      "visual": [
+        "black canvas",
+        "serif headlines",
+        "restrained gold",
+        "explanatory diagrams",
+        "question and evidence rhythm"
+      ]
+    },
+    {
+      "id": "premium-product",
+      "name": "雷军版",
+      "status": "implemented",
+      "path": "themes/premium-product.css",
+      "family": "premium-baselines",
+      "defaultWhenUnspecified": false,
+      "guide": "../references/premium-baselines.md",
+      "bestFor": [
+        "product launch",
+        "feature reveal",
+        "release presentation"
+      ],
+      "visual": [
+        "black and deep navy",
+        "bold sans",
+        "coral accent",
+        "chapter cuts",
+        "single metric focus"
+      ],
+      "aliases": [
+        "产品发布",
+        "雷军风格",
+        "雷军"
+      ]
+    },
+    {
+      "id": "premium-minimal",
+      "name": "乔布斯",
+      "status": "implemented",
+      "path": "themes/premium-minimal.css",
+      "family": "premium-baselines",
+      "defaultWhenUnspecified": false,
+      "guide": "../references/premium-baselines.md",
+      "bestFor": [
+        "short stage speech",
+        "minimal keynote",
+        "single idea presentation"
+      ],
+      "visual": [
+        "near black",
+        "champagne accent",
+        "oversized sans",
+        "few words",
+        "deliberate pauses"
+      ],
+      "aliases": [
+        "极简舞台",
+        "乔布斯版",
+        "乔布斯风格"
+      ]
+    },
+    {
+      "id": "premium-editorial",
+      "name": "典雅编辑",
+      "status": "implemented",
+      "path": "themes/premium-editorial.css",
+      "family": "premium-baselines",
+      "defaultWhenUnspecified": false,
+      "guide": "../references/premium-baselines.md",
+      "bestFor": [
+        "long narrative",
+        "portfolio",
+        "cultural presentation",
+        "institutional story"
+      ],
+      "visual": [
+        "navy chapter openers",
+        "ivory content pages",
+        "serif type",
+        "outlined section numerals",
+        "asymmetric editorial grid"
       ]
     }
   ],
@@ -489,7 +608,6 @@
       "slides": 7,
       "theme": "editorial-cinematic-paper",
       "bestFor": [
-        "unspecified presentation scenario",
         "methodology report",
         "process explanation",
         "quality system",
@@ -502,6 +620,125 @@
         "touch navigation",
         "responsive vertical preview",
         "local image slots with labeled fallbacks"
+      ]
+    },
+    {
+      "id": "premium-consulting",
+      "name": "咨询简报",
+      "path": "full-decks/premium-consulting",
+      "slides": 8,
+      "theme": "premium-consulting",
+      "bestFor": [
+        "consulting",
+        "research",
+        "business report",
+        "analysis",
+        "unspecified scenario"
+      ],
+      "features": [
+        "speaker mode",
+        "edit mode",
+        "keyboard navigation",
+        "touch navigation",
+        "mobile reading layout",
+        "print all slides",
+        "offline file preview"
+      ]
+    },
+    {
+      "id": "premium-lecture",
+      "name": "黑金讲堂",
+      "path": "full-decks/premium-lecture",
+      "slides": 8,
+      "theme": "premium-lecture",
+      "bestFor": [
+        "lecture",
+        "teaching",
+        "method explanation",
+        "professional talk"
+      ],
+      "features": [
+        "speaker mode",
+        "edit mode",
+        "keyboard navigation",
+        "touch navigation",
+        "mobile reading layout",
+        "print all slides",
+        "offline file preview"
+      ]
+    },
+    {
+      "id": "premium-product",
+      "name": "雷军版",
+      "path": "full-decks/premium-product",
+      "slides": 8,
+      "theme": "premium-product",
+      "bestFor": [
+        "product launch",
+        "feature reveal",
+        "release presentation"
+      ],
+      "features": [
+        "speaker mode",
+        "edit mode",
+        "keyboard navigation",
+        "touch navigation",
+        "mobile reading layout",
+        "print all slides",
+        "offline file preview"
+      ],
+      "aliases": [
+        "产品发布",
+        "雷军风格",
+        "雷军"
+      ]
+    },
+    {
+      "id": "premium-minimal",
+      "name": "乔布斯",
+      "path": "full-decks/premium-minimal",
+      "slides": 8,
+      "theme": "premium-minimal",
+      "bestFor": [
+        "short stage speech",
+        "minimal keynote",
+        "single idea presentation"
+      ],
+      "features": [
+        "speaker mode",
+        "edit mode",
+        "keyboard navigation",
+        "touch navigation",
+        "mobile reading layout",
+        "print all slides",
+        "offline file preview"
+      ],
+      "aliases": [
+        "极简舞台",
+        "乔布斯版",
+        "乔布斯风格"
+      ]
+    },
+    {
+      "id": "premium-editorial",
+      "name": "典雅编辑",
+      "path": "full-decks/premium-editorial",
+      "slides": 8,
+      "theme": "premium-editorial",
+      "bestFor": [
+        "long narrative",
+        "portfolio",
+        "cultural presentation",
+        "institutional story"
+      ],
+      "features": [
+        "speaker mode",
+        "edit mode",
+        "keyboard navigation",
+        "touch navigation",
+        "mobile reading layout",
+        "print all slides",
+        "offline file preview"
       ]
     }
   ],
@@ -680,12 +917,15 @@
     }
   ],
   "guides": {
-    "imageComposition": "../references/image-composition.md"
+    "imageComposition": "../references/image-composition.md",
+    "premiumBaselines": "../references/premium-baselines.md"
   },
   "components": {
-    "imageComposition": "single-page-layouts/image-composition.css"
+    "imageComposition": "single-page-layouts/image-composition.css",
+    "premiumCore": "full-decks/_shared/premium-core.css"
   },
   "examples": {
-    "imageComposition": "../examples/image-composition/index.html"
+    "imageComposition": "../examples/image-composition/index.html",
+    "premiumBaselines": "../examples/premium-baselines/index.html"
   }
 }

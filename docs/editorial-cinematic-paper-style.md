@@ -1,14 +1,14 @@
 # Editorial Cinematic Paper
 
-Use this guide when the selected theme is `editorial-cinematic-paper`, including the default case where the user did not specify a visual style.
+Use this guide when the selected theme is `editorial-cinematic-paper`, when explicitly requested or when continuing an existing deck with this theme.
 
 ## Selection precedence
 
 1. If the user explicitly names a bundled Sense Deck style and the request matches it, use that style.
 2. If the user gives a clear visual brief that is not a bundled style, honor the brief and adapt the nearest compatible template. Do not silently replace an explicit request with the default.
-3. If the user gives no visual direction, use `editorial-cinematic-paper`.
+3. For a new deck with no visual direction, use `../references/premium-baselines.md` and `../templates/style-routing.json`; this theme is no longer the unspecified-style fallback.
 
-Scenario selection and style selection are separate. Continue to choose the closest full deck for narrative structure, then apply this theme. Use `editorial-cinematic-report` when the scenario is ambiguous, when the material is report-like or process-heavy, or when another full deck cannot accept the theme without major visual rewrites.
+Scenario selection and style selection are separate. Continue to choose the closest full deck for narrative structure, then apply this theme. When this theme is selected, use `editorial-cinematic-report` for report-like or process-heavy material, or when another full deck cannot accept it without major visual rewrites.
 
 ## Visual signature
 

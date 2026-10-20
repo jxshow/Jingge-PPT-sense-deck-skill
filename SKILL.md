@@ -9,7 +9,7 @@ You are a browser-native PPT architect. Build polished static HTML decks by sele
 
 ## Template-First Workflow
 
-1. Read `templates/index.json`.
+1. Read `templates/index.json` and `templates/style-routing.json`. For an unspecified new deck, read [premium baseline rules](references/premium-baselines.md) before choosing the visual direction.
 2. Create or update `templates/content-ir/content-ir.example.json` shape for the user's material before writing HTML.
 3. Read the relevant catalog:
    - `templates/full-decks/deck-catalog.json` for mainline deck structure.
@@ -25,37 +25,25 @@ You are a browser-native PPT architect. Build polished static HTML decks by sele
 11. Write the final deck as static HTML/CSS/JS.
 12. Validate keyboard navigation, mobile layout, presenter mode, image slots, gesture fallback, and export path.
 
+## Style Name Lookup
+
+See [the current style atlas](examples/style-atlas/catalog.json) for display names and preview sources. `premium-product` is **雷军版**; `premium-minimal` is **乔布斯**. Accept their prior names 产品发布 and 极简舞台 as aliases. Do not include reference creators’ names or branding in generated content.
+
 ## Default Selection Policy
 
-When the user does not name a deck, still choose a bundled full deck. Do not generate an ad hoc presentation from scratch just because the prompt is short or only names a topic.
+Resolve style before visual implementation:
 
-Style precedence is independent from deck selection and must be resolved before visual implementation:
+1. Honor the user's explicit bundled style, visual brief, brand rules or reference. Existing house styles remain available.
+2. When editing an existing deck, preserve its established theme unless the user requests a style change.
+3. For a new deck without visual direction, use the five-style premium baseline family in [references/premium-baselines.md](references/premium-baselines.md): report/analysis → `premium-consulting`; lecture/teaching → `premium-lecture`; product reveal → `premium-product`; short stage speech → `premium-minimal`; long narrative/portfolio → `premium-editorial`. Ambiguous → `premium-consulting`.
 
-1. If the user explicitly names a bundled Sense Deck style and the request matches it, use that style.
-2. If the user gives a clear visual brief that is not a bundled style, honor the brief and adapt the nearest compatible template. Do not silently replace an explicit request with a house style.
-3. If the user gives no visual direction, use `editorial-cinematic-paper` and read `docs/editorial-cinematic-paper-style.md` before styling.
+Choose a complete bundled deck as the narrative base, fill `content-ir.json`, then adapt or add semantic layouts. Do not improvise an ungrounded deck merely because the prompt is short. A new visual theme needs the corresponding page rhythm, typography and spacing, not just a palette swap. Do not silently adopt the theme embedded in a scenario template when it conflicts with the selected direction.
 
-Selection priority:
+The five baselines are also a quality floor: one main point, deliberate hierarchy and whitespace, aligned evidence, measured chart encodings, and varied page roles. No generic decorative card grids, meaningless glowing geometry, or invented imagery as a default. Explicitly selected specialty house styles retain their own visual vocabulary.
 
-1. Match the user's scenario to `templates/full-decks/deck-catalog.json`.
-2. Copy the closest full deck as the structural base.
-3. Replace its content through `content-ir.json`.
-4. Add or swap individual slides from `templates/single-page-layouts/` only when the selected deck lacks a needed page shape.
-5. Apply the style precedence above after deck selection. Scenario determines structure; user direction determines style.
-6. When style is unspecified and the scenario is ambiguous or report/process-heavy, prefer `templates/full-decks/editorial-cinematic-report/`.
-7. If no full deck fits, assemble from single-page layouts and document the fallback in implementation notes.
+Style references are visual evidence, not content sources. Do not carry over reference authors' names, logos, portraits, QR codes, affiliations, biographies or unverified numbers. Only add user branding or attribution when supplied or requested. Do not claim which model created a reference without evidence.
 
-Theme selection is a styling decision. Full deck selection is a narrative and quality decision. A deck generated without using any bundled full deck or layout is a last resort, not the default.
-
-The deck should be a folder with:
-
-```text
-index.html
-styles.css
-deck.js
-```
-
-No bundler is required. The deck must work from a local HTTP server and be deployable as static files.
+Each of the five templates includes 8 editable example pages, original sample copy, IR, notes, keyboard/touch navigation, presenter mode, local text editing/export and print support. Read the guide for copying shared runtime/theme dependencies. A full deck with no bundled template or semantic layout remains a last resort.
 
 ## Input Modes
 
@@ -183,7 +171,7 @@ Minimum requirements:
 2. Preserve `content-ir.json` as the editable source of truth for title, audience, slide roles, visible content, speaker notes, theme, assets, and feature flags.
 3. Add `data-editable`, `data-field`, or clear semantic selectors to important text and repeated content blocks.
 4. Add `data-layout`, `data-role`, or CSS custom properties for layout-sensitive regions so spacing, columns, card sizes, and decorative asset positions can be adjusted without rewriting the whole slide.
-5. Include or implement an edit mode. The default runtime is `templates/runtime/edit-mode.js`. Use `E` to toggle editing, make editable text contenteditable, expose a small layout panel, persist draft edits to `localStorage`, and provide a JSON export of edits.
+5. Include or implement an edit mode. The default runtime is `templates/runtime/edit-mode.js`; the five premium baselines use their bundled `_shared/premium-runtime.js` instead. Do not load both editors. Use `E` to toggle editing, make editable text contenteditable, expose a small layout panel, persist draft edits to `localStorage`, and provide a JSON export of edits.
 6. Keep presenter notes editable in source/IR even when hidden from the audience.
 7. When exporting to PDF/PNG, export the current edited state when possible, but never destroy the original HTML or `content-ir.json`.
 8. If the target product cannot run the edit runtime, still generate clean, readable HTML/CSS with obvious text nodes and layout variables.
@@ -302,11 +290,13 @@ Lifecycle rule:
 
 Use `templates/runtime/slide-lifecycle.js` and `templates/runtime/canvas-fx-runtime.js` as the default runtime contract.
 
+The five premium baseline templates already provide keyboard/touch navigation, presenter notes, editing, layout controls and `deck:slidechange` events in `_shared/premium-runtime.js`. Preserve that runtime when copying them; add lifecycle or Canvas modules only for features that need them.
+
 ## Signature Styles
 
-Use these house styles unless the user requests another direction:
+Named house styles remain available alongside the five premium baselines:
 
-- Editorial Cinematic Paper: warm ivory paper, near-black Chinese serif type, oxblood numbering and rules, strict editorial grids, and low-key cinematic stills. This is the default when the user gives no style direction.
+- Editorial Cinematic Paper: warm ivory paper, near-black Chinese serif type, oxblood numbering and rules, strict editorial grids, and low-key cinematic stills. Use when explicitly selected or when continuing an existing deck in this style.
 - Apple Bento: large clean information blocks, premium spacing, restrained contrast, product-grade hierarchy.
 - Neumorphic Glass: frosted panels, soft inner/outer shadows, translucent surfaces, readable projection contrast.
 - Noir Bronze Editorial: black keynote background, bronze accents, Chinese serif hero type, mono metadata, thin rules, grain, and magazine-like data storytelling.
@@ -339,24 +329,9 @@ Slide title rules:
 
 ## Theme Selection
 
-Resolve theme selection in this order:
+Apply `Default Selection Policy` and `templates/style-routing.json`; do not maintain a separate conflicting fallback. The five premium baselines are described in [references/premium-baselines.md](references/premium-baselines.md) and demonstrated in [examples/premium-baselines/index.html](examples/premium-baselines/index.html).
 
-1. An explicit user style that matches a bundled style.
-2. An explicit user visual brief, adapted through the nearest compatible template even when no bundled style is an exact match.
-3. `editorial-cinematic-paper` when the user gives no visual direction.
-
-When the default is selected, read `docs/editorial-cinematic-paper-style.md`. Keep its warm paper, oxblood accent, editorial grid, Chinese serif hierarchy, and low-key cinematic image logic together; do not reduce it to a beige background.
-
-Bundled scenario matches for explicit requests include:
-
-- AI, product, strategy, new category: `apple-bento-glass`
-- Investor or executive: `executive-clean`
-- social media carousel: `xhs-editorial`
-- technical talk: `semantic-dark`
-- magazine-style keynote, founder narrative, growth case, black-gold data story: `noir-bronze-editorial`
-- warm editorial report, methodology, process system, cinematic evidence board: `editorial-cinematic-paper`
-
-When using multiple styles, keep typography and spacing tokens consistent.
+All existing named house styles remain selectable: `editorial-cinematic-paper`, `apple-bento-glass`, `executive-clean`, `semantic-dark`, `xhs-editorial`, `noir-bronze-editorial`, cinematic, paper-craft, cyberpunk, and other catalog entries. When one is selected, read its own guide and preserve its design language. Theme and per-slide theme fields in the final IR must match the resolved choice.
 
 ## Gesture Control Rules
 
@@ -394,6 +369,8 @@ Use `S` to toggle presenter mode. Speaker notes live in `<aside class="notes">` 
 
 Before delivery:
 
+- For the five premium baselines, apply the page-by-page checks in `references/premium-baselines.md`; verify no source identity information or unlabeled sample facts survived.
+
 - Check `node --check deck.js`.
 - Open through a local HTTP server.
 - Test next/previous navigation.
@@ -407,6 +384,12 @@ Before delivery:
 ## Current Template Library
 
 This skill currently includes:
+
+- `templates/style-routing.json`
+- `references/premium-baselines.md`
+- `examples/premium-baselines/index.html`
+- Five `premium-*` full decks and matching theme files
+- `templates/full-decks/_shared/premium-core.css` and `premium-runtime.js`
 
 - `templates/themes/apple-bento-glass.css`
 - `templates/themes/theme-catalog.json`

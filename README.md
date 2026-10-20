@@ -178,11 +178,11 @@ HTML Deck 的运行时辅助，包括 slide lifecycle、Canvas FX runtime、编�
 - `nordic-childrens-picture-book`：北欧儿童绘本风、怀旧幽默故事。
 - `史诗级`：历史文化叙事、昭君出塞、国风电影感展示。
 - `neon-noir-city`：赛博朋克城市、AI 未来生活、2098 叙事。
-- `editorial-cinematic-paper`：暖象牙纸、近黑宋体、暗酒红强调、编辑部网格与低照度电影静帧；用户未指定视觉风格时的默认主题。
+- `editorial-cinematic-paper`：暖象牙纸、近黑宋体、暗酒红强调、编辑部网格与低照度电影静帧；作为原有风格保留，明确指定或延续原稿时使用。
 
 主题选择建议：
 
-- 未指定视觉风格：`editorial-cinematic-paper`
+- 未指定视觉风格：按 `templates/style-routing.json` 选择五种高端基准模板；场景不明用 `premium-consulting`。
 - AI / 产品 / 策略 / 新品类：`apple-bento-glass`
 - 投资人 / 管理层 / 董事会：`executive-clean`
 - 技术分享 / 架构图 / 系统解释：`semantic-dark`
@@ -192,7 +192,13 @@ HTML Deck 的运行时辅助，包括 slide lifecycle、Canvas FX runtime、编�
 - 赛博朋克 / 未来城市 / 2098 生活方式：`neon-noir-city`
 - 电影海报感 / 历史人物故事 / 国风叙事：`电影质感`
 
-视觉优先级：用户明确指定且与内置主题相符时，使用对应内置主题；用户明确描述了其他视觉方向时，尊重该方向并改造最接近模板；只有在用户没有给出视觉方向时，才回退到 `editorial-cinematic-paper`。详细规则见 `docs/editorial-cinematic-paper-style.md`。
+视觉优先级：用户明确指定且与内置主题相符时，使用对应内置主题；用户明确描述了其他视觉方向时，尊重该方向并改造最接近模板；修改已有演示时保留其选定风格；新建且没有视觉方向时按场景选择五种高端基准模板。详细规则见 `references/premium-baselines.md`。
+
+完整风格名称与缩略图见 [17 种风格总览](examples/style-atlas/鲸格PPT-全部风格总览.png)。
+
+## 五种高端基准风格
+
+新增咨询简报、黑金讲堂、雷军版、乔布斯、典雅编辑。每种都有 8 页可编辑完整模板，分别承载报告、授课、发布、短讲与叙事。它们共同约束未指定风格时的设计质量；原有鲸格风格仍可明确选择。详见 [风格规则](references/premium-baselines.md) 与 [预览](examples/premium-baselines/index.html)。不收录视觉参考中的作者姓名、Logo、肖像、二维码和履历。
 
 ## 完整 Deck 模板
 
@@ -217,7 +223,7 @@ HTML Deck 的运行时辅助，包括 slide lifecycle、Canvas FX runtime、编�
 - `电影质感`：电影感、昭君出塞、历史文化叙事、MediaPipe 手势 Deck。
 - `碎纸片`：纸片拼贴、paper craft lab、AI 游戏生产线。
 - `赛博朋克`：赛博朋克、未来城市、2098 生活方式。
-- `editorial-cinematic-report`：未指定视觉风格时的暖纸编辑部电影报告默认模板，含流程、系统图、影像分析、多视角资产、质量闭环与收束页。
+- `editorial-cinematic-report`：原有暖纸编辑部电影报告模板，含流程、系统图、影像分析、多视角资产、质量闭环与收束页。
 
 ## 单页布局
 
@@ -278,8 +284,8 @@ HTML Deck 的运行时辅助，包括 slide lifecycle、Canvas FX runtime、编�
 
 对于图文并茂但不是每页都需要海报大图的 Deck，推荐批量生成小配图：
 
-- 10-15 页 Deck 默认生成 6-12 个小 PNG/WebP。
-- 前三页试样默认生成 2-4 个小配图。
+- 只有图片确实承担内容任务时才生成配图。五种高端基准不按页数强配图；其他图文风格可按需要规划小 PNG/WebP。
+- 前三页试样先验证版式和信息结构，再判断是否需要配图。
 - 小配图应对应观点、卡片、关键词、机制或用户声音。
 - 非封面/章节页的小配图通常占 slide 宽度的 18%-32%。
 - 统一艺术方向，避免把无关装饰散落到页面上。

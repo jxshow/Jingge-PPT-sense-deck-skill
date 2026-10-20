@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "scope": "New decks without a requested visual direction; preserve explicit styles and existing deck continuity.",
+  "precedence": [
+    "explicit named style or visual reference",
+    "existing deck theme unless restyling is requested",
+    "scenario-selected premium baseline",
+    "premium-consulting when scenario is ambiguous"
+  ],
+  "ambiguousFallback": "premium-consulting",
+  "guide": "../references/premium-baselines.md",
+  "profiles": [
+    {
+      "id": "premium-consulting",
+      "name": "咨询简报",
+      "when": [
+        "consulting",
+        "research",
+        "business report",
+        "analysis",
+        "unspecified scenario"
+      ],
+      "deck": "full-decks/premium-consulting",
+      "theme": "themes/premium-consulting.css"
+    },
+    {
+      "id": "premium-lecture",
+      "name": "黑金讲堂",
+      "when": [
+        "lecture",
+        "teaching",
+        "method explanation",
+        "professional talk"
+      ],
+      "deck": "full-decks/premium-lecture",
+      "theme": "themes/premium-lecture.css"
+    },
+    {
+      "id": "premium-product",
+      "name": "雷军版",
+      "when": [
+        "product launch",
+        "feature reveal",
+        "release presentation"
+      ],
+      "deck": "full-decks/premium-product",
+      "theme": "themes/premium-product.css",
+      "aliases": [
+        "产品发布",
+        "雷军风格",
+        "雷军"
+      ]
+    },
+    {
+      "id": "premium-minimal",
+      "name": "乔布斯",
+      "when": [
+        "short stage speech",
+        "minimal keynote",
+        "single idea presentation"
+      ],
+      "deck": "full-decks/premium-minimal",
+      "theme": "themes/premium-minimal.css",
+      "aliases": [
+        "极简舞台",
+        "乔布斯版",
+        "乔布斯风格"
+      ]
+    },
+    {
+      "id": "premium-editorial",
+      "name": "典雅编辑",
+      "when": [
+        "long narrative",
+        "portfolio",
+        "cultural presentation",
+        "institutional story"
+      ],
+      "deck": "full-decks/premium-editorial",
+      "theme": "themes/premium-editorial.css"
+    }
+  ],
+  "constraints": [
+    "Do not include identities or source screenshots from visual references.",
+    "Use semantic editable layouts, never rasterize whole slides.",
+    "Existing explicit house styles keep their own visual vocabulary.",
+    "Template sample figures are not factual sources."
+  ]
+}

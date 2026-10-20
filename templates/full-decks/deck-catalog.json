@@ -1,6 +1,6 @@
 {
   "purpose": "Choose a complete deck first when the requested presentation matches a known scenario. Copy the closest deck, then replace content.",
-  "targetCount": 20,
+  "targetCount": 25,
   "decks": [
     {
       "id": "pitch-deck",
@@ -285,7 +285,6 @@
       "status": "implemented",
       "path": "editorial-cinematic-report",
       "theme": "editorial-cinematic-paper",
-      "defaultWhenStyleUnspecified": true,
       "bestFor": [
         "未指定视觉风格的演示",
         "方法论报告",
@@ -454,6 +453,176 @@
         "neon noir theme",
         "template frame assets"
       ]
+    },
+    {
+      "id": "premium-consulting",
+      "name": "咨询简报",
+      "status": "implemented",
+      "path": "premium-consulting",
+      "theme": "premium-consulting",
+      "bestFor": [
+        "consulting",
+        "research",
+        "business report",
+        "analysis",
+        "unspecified scenario"
+      ],
+      "defaultSlides": [
+        "cover",
+        "thesis",
+        "timeline",
+        "diagnosis",
+        "priorities",
+        "process",
+        "measurement",
+        "closing"
+      ],
+      "features": [
+        "speaker mode",
+        "edit mode",
+        "keyboard navigation",
+        "touch navigation",
+        "responsive reading",
+        "print",
+        "offline preview"
+      ]
+    },
+    {
+      "id": "premium-lecture",
+      "name": "黑金讲堂",
+      "status": "implemented",
+      "path": "premium-lecture",
+      "theme": "premium-lecture",
+      "bestFor": [
+        "lecture",
+        "teaching",
+        "method explanation",
+        "professional talk"
+      ],
+      "defaultSlides": [
+        "cover",
+        "question",
+        "model",
+        "evidence",
+        "explanation",
+        "thesis",
+        "action",
+        "closing"
+      ],
+      "features": [
+        "speaker mode",
+        "edit mode",
+        "keyboard navigation",
+        "touch navigation",
+        "responsive reading",
+        "print",
+        "offline preview"
+      ]
+    },
+    {
+      "id": "premium-product",
+      "name": "雷军版",
+      "status": "implemented",
+      "path": "premium-product",
+      "theme": "premium-product",
+      "bestFor": [
+        "product launch",
+        "feature reveal",
+        "release presentation"
+      ],
+      "defaultSlides": [
+        "cover",
+        "chapter",
+        "workflow",
+        "metric",
+        "chapter",
+        "comparison",
+        "feature-reveal",
+        "conclusion"
+      ],
+      "features": [
+        "speaker mode",
+        "edit mode",
+        "keyboard navigation",
+        "touch navigation",
+        "responsive reading",
+        "print",
+        "offline preview"
+      ],
+      "aliases": [
+        "产品发布",
+        "雷军风格",
+        "雷军"
+      ]
+    },
+    {
+      "id": "premium-minimal",
+      "name": "乔布斯",
+      "status": "implemented",
+      "path": "premium-minimal",
+      "theme": "premium-minimal",
+      "bestFor": [
+        "short stage speech",
+        "minimal keynote",
+        "single idea presentation"
+      ],
+      "defaultSlides": [
+        "cover",
+        "statement",
+        "data",
+        "contrast",
+        "pause",
+        "prompt",
+        "statement",
+        "closing"
+      ],
+      "features": [
+        "speaker mode",
+        "edit mode",
+        "keyboard navigation",
+        "touch navigation",
+        "responsive reading",
+        "print",
+        "offline preview"
+      ],
+      "aliases": [
+        "极简舞台",
+        "乔布斯版",
+        "乔布斯风格"
+      ]
+    },
+    {
+      "id": "premium-editorial",
+      "name": "典雅编辑",
+      "status": "implemented",
+      "path": "premium-editorial",
+      "theme": "premium-editorial",
+      "bestFor": [
+        "long narrative",
+        "portfolio",
+        "cultural presentation",
+        "institutional story"
+      ],
+      "defaultSlides": [
+        "cover",
+        "prologue",
+        "chapter",
+        "journey",
+        "evidence",
+        "chapter",
+        "mechanism",
+        "closing"
+      ],
+      "features": [
+        "speaker mode",
+        "edit mode",
+        "keyboard navigation",
+        "touch navigation",
+        "responsive reading",
+        "print",
+        "offline preview"
+      ]
     }
-  ]
+  ],
+  "styleRouting": "../style-routing.json"
 }

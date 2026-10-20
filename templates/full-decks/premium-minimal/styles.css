@@ -1,0 +1,36 @@
+@import url("../_shared/premium-core.css");
+@import url("../../themes/premium-minimal.css");
+
+.slide { overflow: hidden; }
+.minimal-cover { display: grid; align-content: end; }
+.minimal-cover .p-display { max-width: 9em; font-weight: 600; letter-spacing: -.07em; }
+.minimal-cover .p-lead { max-width: 30em; margin-top: 2cqw; }
+.minimal-statement { display: grid; place-content: center; text-align: center; }
+.minimal-statement > div:first-child { display: flex; flex-direction: column; align-items: center; gap: 1.25cqw; }
+.minimal-statement h2.p-display { max-width: 12em; font-size: var(--p-display); line-height: 1.2; font-weight: 600; }
+.minimal-statement .p-caption { margin-top: 1.75cqw; }
+.minimal-number { display: grid; grid-template-columns: 3fr 2fr; align-items: end; gap: 6cqw; }
+.minimal-number .number { color: var(--p-accent); font: 600 25cqw/.73 var(--p-sans); letter-spacing: -.1em; }
+.minimal-number .number-copy { border-bottom: 1px solid var(--p-line); padding-bottom: 1.25cqw; }
+.minimal-pair { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: minmax(0, 1fr) auto; align-items: center; text-align: center; }
+.minimal-pair > div:not(.p-folio) { min-height: 28cqw; display: grid; place-content: center; }
+.minimal-pair > div:not(.p-folio) + div:not(.p-folio) { border-left: 1px solid var(--p-line); }
+.minimal-pair > .p-folio { grid-column: 1 / -1; min-height: 0; align-self: end; }
+.minimal-pair .term { font: 600 7.5cqw/.9 var(--p-sans); letter-spacing: -.07em; }
+.minimal-pair .term.accent { color: var(--p-accent); }
+.minimal-pair .p-caption { margin-top: 2cqw; }
+.minimal-pause { display: grid; place-content: center; text-align: center; }
+.minimal-pause .pause-dot { width: 1.2cqw; height: 1.2cqw; background: var(--p-accent); margin: 0 auto 3cqw; }
+.minimal-pause h2.p-display { font-size: var(--p-display); line-height: 1.2; }
+.minimal-line { display: grid; grid-template-columns: 1fr 2fr; gap: 6cqw; align-items: center; }
+.minimal-line .line-phrase { border-top: 1px solid var(--p-line); border-bottom: 1px solid var(--p-line); padding: 2cqw 0; }
+.minimal-close { display: grid; align-content: center; }
+.minimal-close h2.p-display { max-width: 8em; font-size: var(--p-display); line-height: 1.2; }
+.minimal-close .p-rule { width: 20cqw; margin: 3cqw 0 1.5cqw; }
+@media (max-width:800px) {
+  .minimal-number, .minimal-line { grid-template-columns: 1fr; gap: 2rem; }
+  .minimal-number .number { font-size: 46vw; }
+  .minimal-pair > div:not(.p-folio) { min-height: 13rem; }
+  .minimal-pair .term { font-size: 17vw; }
+  .minimal-pause .pause-dot { width: 12px; height: 12px; }
+}

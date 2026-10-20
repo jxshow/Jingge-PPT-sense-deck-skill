@@ -1,0 +1,13 @@
+{
+  "title":"知序产品发布模板","subtitle":"让每一条线索回到该在的位置","audience":"产品发布现场的演讲者与知识工作者","scenario":"产品发布","tone":"克制、清晰、具有舞台停顿感","language":"zh-CN","theme":"premium-product","imageCapabilityMode":"upload-slots","features":{"gesture":"off","presenterMode":true,"editable":true},
+  "slides":[
+    {"role":"cover","title":"知序，让每一条线索回到该在的位置","layout":"offwhite-cover","theme":"premium-product","visibleContent":{"headline":"知序，让每一条线索回到该在的位置","lead":"为需要持续阅读、判断与行动的人，建立一处能回看的工作台。"},"speakerNotes":"开场保持停顿。先讲线索散落的感受，再给出产品名称。"},
+    {"role":"chapter","title":"把收集变成可用的线索","layout":"chapter-cut","theme":"premium-product","visibleContent":{"number":"01","lead":"信息并不稀缺。真正稀缺的是，在需要时重新找到它的能力。"},"speakerNotes":"第一次硬切，用具体情境带入。"},
+    {"role":"workflow","title":"一条想法，经历四次可见的变化","layout":"timeline","theme":"premium-product","visibleContent":{"steps":["收进来","说清楚","连起来","用出去"]},"speakerNotes":"逐步讲解可替换的四步工作流。"},
+    {"role":"metric","title":"回找一条线索，演示数据少用 72% 时间","layout":"big-metric","theme":"premium-product","visibleContent":{"metric":"72%","before":"25 分","after":"7 分","dataLabel":"虚构演示数据"},"speakerNotes":"明确说明数据为虚构演示数据。"},
+    {"role":"chapter","title":"把找到变成下一步","layout":"chapter-cut","theme":"premium-product","visibleContent":{"number":"02","lead":"知识只有进入行动，才完成它的价值。"},"speakerNotes":"第二次硬切，从存储转到行动。"},
+    {"role":"comparison","title":"把零散记录和下一次决策放在同一视野","layout":"evidence-comparison","theme":"premium-product","visibleContent":{"before":"找到一堆结果","after":"看到一条可继续的脉络"},"speakerNotes":"左右内容可替换为真实的用户观察。"},
+    {"role":"feature-reveal","title":"三个动作，让知识走到工作台前","layout":"feature-reveal","theme":"premium-product","visibleContent":{"features":["随手收录","关联问题","生成简报"]},"speakerNotes":"逐个出现三项功能，保持单一焦点。"},
+    {"role":"conclusion","title":"让下一次想起，比上一次记录更容易","layout":"conclusion","theme":"premium-product","visibleContent":{"headline":"让下一次想起，比上一次记录更容易","footer":"谢谢观看"},"speakerNotes":"结尾留白，按实际发布需求替换页脚。"}
+  ]
+}

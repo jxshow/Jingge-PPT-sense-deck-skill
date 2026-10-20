@@ -1,0 +1,11 @@
+[data-premium-theme="premium-lecture"] {
+  --p-bg: #080908;
+  --p-fg: #F5F3EB;
+  --p-muted: #B5B5AC;
+  --p-accent: #E0BF62;
+  --p-line: #38382F;
+  --p-surface: #171814;
+  --p-serif: Georgia, "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", SimSun, serif;
+  --p-sans: Arial, "Microsoft YaHei", "PingFang SC", sans-serif;
+  --p-heading-font: var(--p-serif);
+}

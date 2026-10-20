@@ -1,0 +1,11 @@
+[data-premium-theme="premium-minimal"] {
+  --p-bg: #111213;
+  --p-fg: #F6F6F4;
+  --p-muted: #ACADAA;
+  --p-accent: #D8BD80;
+  --p-line: #343638;
+  --p-surface: #1C1E20;
+  --p-serif: Georgia, "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", SimSun, serif;
+  --p-sans: Arial, "Microsoft YaHei", "PingFang SC", sans-serif;
+  --p-heading-font: var(--p-sans);
+}

@@ -1,0 +1,176 @@
+{
+  "title": "鲸格PPT · 全部风格",
+  "count": 17,
+  "entries": [
+    {
+      "number": 1,
+      "id": "premium-consulting",
+      "name": "咨询简报",
+      "description": "结论先行 · 清晰证据",
+      "deck": "premium-consulting",
+      "slide": 0,
+      "preview": "previews/premium-consulting.png",
+      "source": "../../templates/full-decks/premium-consulting/index.html"
+    },
+    {
+      "number": 2,
+      "id": "premium-lecture",
+      "name": "黑金讲堂",
+      "description": "问题引入 · 讲述节奏",
+      "deck": "premium-lecture",
+      "slide": 0,
+      "preview": "previews/premium-lecture.png",
+      "source": "../../templates/full-decks/premium-lecture/index.html"
+    },
+    {
+      "number": 3,
+      "id": "premium-product",
+      "name": "雷军版",
+      "description": "产品揭晓 · 大字与数字",
+      "deck": "premium-product",
+      "slide": 3,
+      "preview": "previews/premium-product.png",
+      "source": "../../templates/full-decks/premium-product/index.html"
+    },
+    {
+      "number": 4,
+      "id": "premium-minimal",
+      "name": "乔布斯",
+      "description": "一个重点 · 极简舞台",
+      "deck": "premium-minimal",
+      "slide": 1,
+      "preview": "previews/premium-minimal.png",
+      "source": "../../templates/full-decks/premium-minimal/index.html"
+    },
+    {
+      "number": 5,
+      "id": "premium-editorial",
+      "name": "典雅编辑",
+      "description": "藏蓝暖白 · 章节叙事",
+      "deck": "premium-editorial",
+      "slide": 0,
+      "preview": "previews/premium-editorial.png",
+      "source": "../../templates/full-decks/premium-editorial/index.html"
+    },
+    {
+      "number": 6,
+      "id": "apple-bento-glass",
+      "name": "苹果玻璃卡片",
+      "description": "通透分区 · 产品策略",
+      "deck": "product-launch",
+      "slide": 0,
+      "preview": "previews/apple-bento-glass.png",
+      "source": "../../templates/full-decks/product-launch/index.html"
+    },
+    {
+      "number": 7,
+      "id": "executive-clean",
+      "name": "高管简报",
+      "description": "克制浅色 · 决策汇报",
+      "deck": "executive-strategy",
+      "slide": 0,
+      "preview": "previews/executive-clean.png",
+      "source": "../../templates/full-decks/executive-strategy/index.html"
+    },
+    {
+      "number": 8,
+      "id": "semantic-dark",
+      "name": "深色技术",
+      "description": "深色系统 · 技术讲解",
+      "deck": "technical-talk",
+      "slide": 0,
+      "preview": "previews/semantic-dark.png",
+      "source": "../../templates/full-decks/technical-talk/index.html"
+    },
+    {
+      "number": 9,
+      "id": "xhs-editorial",
+      "name": "小红书编辑",
+      "description": "温暖醒目 · 社交图文",
+      "deck": "xhs-9-card",
+      "slide": 0,
+      "preview": "previews/xhs-editorial.png",
+      "source": "../../templates/full-decks/xhs-9-card/index.html"
+    },
+    {
+      "number": 10,
+      "id": "cyber-neon",
+      "name": "赛博霓虹",
+      "description": "霓虹灯效 · 硬件发布",
+      "deck": "demo-day",
+      "slide": 0,
+      "preview": "previews/cyber-neon.png",
+      "source": "../../templates/full-decks/demo-day/index.html"
+    },
+    {
+      "number": 11,
+      "id": "warm-paper",
+      "name": "暖纸课堂",
+      "description": "柔和纸感 · 课程讲义",
+      "deck": "courseware",
+      "slide": 0,
+      "preview": "previews/warm-paper.png",
+      "source": "../../templates/full-decks/courseware/index.html"
+    },
+    {
+      "number": 12,
+      "id": "noir-bronze-editorial",
+      "name": "黑铜编辑",
+      "description": "黑铜配色 · 杂志数据",
+      "deck": "@noir",
+      "slide": 0,
+      "preview": "previews/noir-bronze-editorial.png",
+      "source": "../../templates/single-page-layouts/noir-growth-story.html"
+    },
+    {
+      "number": 13,
+      "id": "editorial-cinematic-paper",
+      "name": "暖纸电影报告",
+      "description": "酒红细线 · 电影静帧",
+      "deck": "editorial-cinematic-report",
+      "slide": 1,
+      "preview": "previews/editorial-cinematic-paper.png",
+      "source": "../../templates/full-decks/editorial-cinematic-report/index.html"
+    },
+    {
+      "number": 14,
+      "id": "nordic-childrens-picture-book",
+      "name": "北欧儿童绘本",
+      "description": "童趣插画 · 温暖故事",
+      "deck": "nordic-childrens-picture-book",
+      "slide": 0,
+      "preview": "previews/nordic-childrens-picture-book.png",
+      "source": "../../templates/full-decks/nordic-childrens-picture-book/index.html"
+    },
+    {
+      "number": 15,
+      "id": "史诗级",
+      "name": "电影质感",
+      "description": "国风影像 · 历史叙事",
+      "deck": "电影质感",
+      "slide": 0,
+      "preview": "previews/史诗级.png",
+      "source": "../../templates/full-decks/电影质感/index.html"
+    },
+    {
+      "number": 16,
+      "id": "paper-craft-lab",
+      "name": "碎纸片",
+      "description": "纸片拼贴 · 创意流程",
+      "deck": "碎纸片",
+      "slide": 0,
+      "preview": "previews/paper-craft-lab.png",
+      "source": "../../templates/full-decks/碎纸片/index.html"
+    },
+    {
+      "number": 17,
+      "id": "neon-noir-city",
+      "name": "赛博朋克 2098",
+      "description": "未来城市 · 霓虹系统",
+      "deck": "赛博朋克",
+      "slide": 0,
+      "preview": "previews/neon-noir-city.png",
+      "source": "../../templates/full-decks/赛博朋克/index.html"
+    }
+  ]
+}

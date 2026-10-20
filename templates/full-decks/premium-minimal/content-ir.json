@@ -1,0 +1,13 @@
+{
+  "title":"少一点，更清楚","audience":"需要进行短讲、开场或阶段总结的表达者","scenario":"舞台短讲与工作坊开场","tone":"安静、直接、留有停顿","theme":"premium-minimal","imageCapabilityMode":"upload-slots","features":{"gesture":"off","presenterMode":true,"editable":true},
+  "slides":[
+    {"role":"cover","title":"少一点，更清楚。","layout":"cover","theme":"premium-minimal","visibleContent":{"title":"少一点，更清楚。","subtitle":"把一场短讲留给一个明确的判断。"},"speakerNotes":"直接说今天只讨论一个判断。"},
+    {"role":"statement","title":"每一页，只做一件事。","layout":"statement","theme":"premium-minimal","visibleContent":{"statement":"每一页，只做一件事。"},"speakerNotes":"停两秒，再举例。"},
+    {"role":"data","title":"一个重点足够开始。","layout":"hero-number","theme":"premium-minimal","visibleContent":{"number":"1","support":"一个重点足够开始。","dataLabel":"演示数据"},"speakerNotes":"数字是视觉强信号，不是指标承诺。"},
+    {"role":"contrast","title":"堆满与留下","layout":"two-term-contrast","theme":"premium-minimal","visibleContent":{"terms":["堆满：所有材料同时出现","留下：只保留改变判断的材料"]},"speakerNotes":"先让两个词形成张力。"},
+    {"role":"pause","title":"停一下。","layout":"pause","theme":"premium-minimal","visibleContent":{"statement":"停一下。"},"speakerNotes":"沉默三秒。"},
+    {"role":"prompt","title":"删到只剩一句，它还成立吗？","layout":"single-line","theme":"premium-minimal","visibleContent":{"question":"删到只剩一句，它还成立吗？"},"speakerNotes":"请听众尝试把自己的一页内容删成一句。"},
+    {"role":"statement","title":"留白，也是内容。","layout":"statement","theme":"premium-minimal","visibleContent":{"statement":"留白，也是内容。"},"speakerNotes":"只说一句。"},
+    {"role":"closing","title":"现在，少说一句。","layout":"closing","theme":"premium-minimal","visibleContent":{"statement":"现在，少说一句。","support":"然后看重点会不会更清楚。"},"speakerNotes":"直接进入交流或下一段议程。"}
+  ]
+}

@@ -1,64 +1,265 @@
 {
   "purpose": "Choose a visual theme by audience, subject, and presentation scenario. Themes are CSS token/component layers and should be swappable without rewriting slide HTML.",
-  "targetCount": 36,
+  "targetCount": 41,
   "themes": [
     {
       "id": "apple-bento-glass",
       "status": "implemented",
       "path": "apple-bento-glass.css",
-      "bestFor": ["AI", "product strategy", "premium business deck", "short drama overseas"],
-      "visual": ["Apple bento", "glassmorphism", "large semantic cards"]
+      "bestFor": [
+        "AI",
+        "product strategy",
+        "premium business deck",
+        "short drama overseas"
+      ],
+      "visual": [
+        "Apple bento",
+        "glassmorphism",
+        "large semantic cards"
+      ]
     },
     {
       "id": "executive-clean",
       "status": "implemented",
       "path": "executive-clean.css",
-      "bestFor": ["board meeting", "strategy report", "investor update", "weekly report"],
-      "visual": ["light", "restrained", "executive", "data-first"]
+      "bestFor": [
+        "board meeting",
+        "strategy report",
+        "investor update",
+        "weekly report"
+      ],
+      "visual": [
+        "light",
+        "restrained",
+        "executive",
+        "data-first"
+      ]
     },
     {
       "id": "semantic-dark",
       "status": "implemented",
       "path": "semantic-dark.css",
-      "bestFor": ["technical talk", "architecture", "AI systems", "developer presentation"],
-      "visual": ["dark", "precise", "high contrast", "system map"]
+      "bestFor": [
+        "technical talk",
+        "architecture",
+        "AI systems",
+        "developer presentation"
+      ],
+      "visual": [
+        "dark",
+        "precise",
+        "high contrast",
+        "system map"
+      ]
     },
     {
       "id": "xhs-editorial",
       "status": "implemented",
       "path": "xhs-editorial.css",
-      "bestFor": ["小红书图文", "social carousel", "consumer education", "creator content"],
-      "visual": ["editorial", "warm", "shareable", "high-retention"]
+      "bestFor": [
+        "小红书图文",
+        "social carousel",
+        "consumer education",
+        "creator content"
+      ],
+      "visual": [
+        "editorial",
+        "warm",
+        "shareable",
+        "high-retention"
+      ]
     },
     {
       "id": "cyber-neon",
       "status": "implemented",
       "path": "cyber-neon.css",
-      "bestFor": ["AI future", "cyber topic", "launch event", "data stream"],
-      "visual": ["neon", "grid", "electric", "high-energy"]
+      "bestFor": [
+        "AI future",
+        "cyber topic",
+        "launch event",
+        "data stream"
+      ],
+      "visual": [
+        "neon",
+        "grid",
+        "electric",
+        "high-energy"
+      ]
     },
     {
       "id": "warm-paper",
       "status": "implemented",
       "path": "warm-paper.css",
-      "bestFor": ["courseware", "lecture notes", "storytelling", "culture topic"],
-      "visual": ["paper", "warm", "serif", "calm"]
+      "bestFor": [
+        "courseware",
+        "lecture notes",
+        "storytelling",
+        "culture topic"
+      ],
+      "visual": [
+        "paper",
+        "warm",
+        "serif",
+        "calm"
+      ]
     },
     {
       "id": "noir-bronze-editorial",
       "status": "implemented",
       "path": "noir-bronze-editorial.css",
-      "bestFor": ["magazine keynote", "data story", "founder narrative", "case study", "premium black-gold report"],
-      "visual": ["black background", "bronze accent", "Chinese serif headline", "mono metadata", "editorial data chart"]
+      "bestFor": [
+        "magazine keynote",
+        "data story",
+        "founder narrative",
+        "case study",
+        "premium black-gold report"
+      ],
+      "visual": [
+        "black background",
+        "bronze accent",
+        "Chinese serif headline",
+        "mono metadata",
+        "editorial data chart"
+      ]
     },
     {
       "id": "editorial-cinematic-paper",
       "status": "implemented",
       "path": "editorial-cinematic-paper.css",
-      "defaultWhenUnspecified": true,
       "guide": "../../docs/editorial-cinematic-paper-style.md",
-      "bestFor": ["unspecified visual style", "methodology report", "process explanation", "cinematic evidence board", "editorial keynote"],
-      "visual": ["warm ivory paper", "near-black Chinese serif headline", "oxblood accent", "thin editorial grid", "low-key cinematic stills"]
+      "bestFor": [
+        "methodology report",
+        "process explanation",
+        "cinematic evidence board",
+        "editorial keynote"
+      ],
+      "visual": [
+        "warm ivory paper",
+        "near-black Chinese serif headline",
+        "oxblood accent",
+        "thin editorial grid",
+        "low-key cinematic stills"
+      ]
+    },
+    {
+      "id": "premium-consulting",
+      "name": "咨询简报",
+      "status": "implemented",
+      "path": "premium-consulting.css",
+      "family": "premium-baselines",
+      "defaultWhenUnspecified": true,
+      "guide": "../../references/premium-baselines.md",
+      "bestFor": [
+        "consulting",
+        "research",
+        "business report",
+        "analysis",
+        "unspecified scenario"
+      ],
+      "visual": [
+        "white canvas",
+        "serif conclusions",
+        "terracotta accent",
+        "aligned evidence tables",
+        "thin rules"
+      ]
+    },
+    {
+      "id": "premium-lecture",
+      "name": "黑金讲堂",
+      "status": "implemented",
+      "path": "premium-lecture.css",
+      "family": "premium-baselines",
+      "defaultWhenUnspecified": false,
+      "guide": "../../references/premium-baselines.md",
+      "bestFor": [
+        "lecture",
+        "teaching",
+        "method explanation",
+        "professional talk"
+      ],
+      "visual": [
+        "black canvas",
+        "serif headlines",
+        "restrained gold",
+        "explanatory diagrams",
+        "question and evidence rhythm"
+      ]
+    },
+    {
+      "id": "premium-product",
+      "name": "雷军版",
+      "status": "implemented",
+      "path": "premium-product.css",
+      "family": "premium-baselines",
+      "defaultWhenUnspecified": false,
+      "guide": "../../references/premium-baselines.md",
+      "bestFor": [
+        "product launch",
+        "feature reveal",
+        "release presentation"
+      ],
+      "visual": [
+        "black and deep navy",
+        "bold sans",
+        "coral accent",
+        "chapter cuts",
+        "single metric focus"
+      ],
+      "aliases": [
+        "产品发布",
+        "雷军风格",
+        "雷军"
+      ]
+    },
+    {
+      "id": "premium-minimal",
+      "name": "乔布斯",
+      "status": "implemented",
+      "path": "premium-minimal.css",
+      "family": "premium-baselines",
+      "defaultWhenUnspecified": false,
+      "guide": "../../references/premium-baselines.md",
+      "bestFor": [
+        "short stage speech",
+        "minimal keynote",
+        "single idea presentation"
+      ],
+      "visual": [
+        "near black",
+        "champagne accent",
+        "oversized sans",
+        "few words",
+        "deliberate pauses"
+      ],
+      "aliases": [
+        "极简舞台",
+        "乔布斯版",
+        "乔布斯风格"
+      ]
+    },
+    {
+      "id": "premium-editorial",
+      "name": "典雅编辑",
+      "status": "implemented",
+      "path": "premium-editorial.css",
+      "family": "premium-baselines",
+      "defaultWhenUnspecified": false,
+      "guide": "../../references/premium-baselines.md",
+      "bestFor": [
+        "long narrative",
+        "portfolio",
+        "cultural presentation",
+        "institutional story"
+      ],
+      "visual": [
+        "navy chapter openers",
+        "ivory content pages",
+        "serif type",
+        "outlined section numerals",
+        "asymmetric editorial grid"
+      ]
     }
-  ]
+  ],
+  "styleRouting": "../style-routing.json"
 }
