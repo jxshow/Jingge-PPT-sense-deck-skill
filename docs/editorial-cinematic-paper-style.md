@@ -4,7 +4,7 @@ Use this guide when the selected theme is `editorial-cinematic-paper`, when expl
 
 ## Selection precedence
 
-1. If the user explicitly names a bundled Sense Deck style and the request matches it, use that style.
+1. If the user explicitly names a bundled 鲸格 PPT style and the request matches it, use that style.
 2. If the user gives a clear visual brief that is not a bundled style, honor the brief and adapt the nearest compatible template. Do not silently replace an explicit request with the default.
 3. For a new deck with no visual direction, use `../references/premium-baselines.md` and `../templates/style-routing.json`; this theme is no longer the unspecified-style fallback.
 

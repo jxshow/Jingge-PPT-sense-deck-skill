@@ -183,7 +183,7 @@ aside.notes {
   display: none;
 }
 
-.sense-edit-toolbar {
+.jingge-edit-toolbar {
   border: 1px solid var(--ecp-rule) !important;
   border-radius: 0 !important;
   color: var(--ecp-ink) !important;
@@ -193,14 +193,14 @@ aside.notes {
   font-family: var(--ecp-meta) !important;
 }
 
-.sense-edit-toolbar button {
+.jingge-edit-toolbar button {
   border: 1px solid var(--ecp-rule-soft) !important;
   border-radius: 0 !important;
   color: var(--ecp-ink) !important;
   background: var(--ecp-surface) !important;
 }
 
-.sense-editing [contenteditable="true"],
-.sense-edit-selected {
+.jingge-editing [contenteditable="true"],
+.jingge-edit-selected {
   outline-color: var(--ecp-oxblood) !important;
 }

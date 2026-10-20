@@ -1,4 +1,4 @@
-# Sense Deck Design Systems
+# 鲸格 PPT Design Systems
 
 Sections 1–7 describe the existing `editorial-cinematic-paper` style. Section 8 defines the five-style premium baseline family.
 

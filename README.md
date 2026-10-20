@@ -1,9 +1,31 @@
 # 鲸格PPT
-<img width="1672" height="941" alt="ChatGPT Image 2026年5月7日 15_49_46" src="https://github.com/user-attachments/assets/863060de-f22d-4e00-b669-3e38e1602bc6" />
+![鲸格 PPT · 17 种风格总览](examples/style-atlas/鲸格PPT-全部风格总览.png)
 
 鲸格PPT 是一个用于生成高质量浏览器原生演示文稿的 Codex Skill。它以静态 HTML/CSS/JS 为主要产物，通过内容 IR、主题系统、完整 Deck 模板、单页布局、动画运行时、演讲者模式、可编辑模式、手势控制和导出辅助，帮助 AI 从一个主题、资料、文章、PPT 模板或业务需求出发，生成可演示、可修改、可部署的 PPT/Slides/Keynote 风格作品。
 
 这个仓库是完整版 Skill，包含完整模板库和重素材示例，适合本地使用、二次开发、发布为开源 Skill，或作为轻量版/20MB 导入版的上游资源。
+
+## 安装与使用
+
+Skill 名称为 `jingge-ppt`，界面显示「鲸格 PPT」。仓库：[jxshow/Jingge-PPT-skill](https://github.com/jxshow/Jingge-PPT-skill)。
+
+Windows PowerShell 安装示例：
+
+```powershell
+$skillsDir = if ($env:CODEX_HOME) { Join-Path $env:CODEX_HOME "skills" } else { Join-Path $env:USERPROFILE ".codex\skills" }
+New-Item -ItemType Directory -Force -Path $skillsDir | Out-Null
+git clone https://github.com/jxshow/Jingge-PPT-skill.git (Join-Path $skillsDir "jingge-ppt")
+```
+
+已有旧安装时，先备份并移出 Skills 目录，再安装新版，避免重复识别。安装后可重新打开 Codex 或新建对话。
+
+使用示例：
+
+```text
+$jingge-ppt 用黑金讲堂版做一份12页演讲，主题是……，受众是……。
+```
+
+可直接指定咨询简报、黑金讲堂、雷军版、乔布斯、典雅编辑等名称；全部17种风格见上方总览。
 
 ## 1–10 张图的图文排版
 
@@ -202,7 +224,13 @@ HTML Deck 的运行时辅助，包括 slide lifecycle、Canvas FX runtime、编�
 
 ## 完整 Deck 模板
 
-完整版包含 20 类主线 Deck：
+完整版包含 25 类主线 Deck，包括五种高端基准模板：
+
+- `premium-consulting`：咨询简报。
+- `premium-lecture`：黑金讲堂。
+- `premium-product`：雷军版。
+- `premium-minimal`：乔布斯。
+- `premium-editorial`：典雅编辑。
 
 - `pitch-deck`：融资路演、商业 pitch。
 - `weekly-report`：周报、业务复盘、项目进展。

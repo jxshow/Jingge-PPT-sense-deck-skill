@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Sense Deck Template Metadata",
+  "title": "鲸格 PPT Template Metadata",
   "type": "object",
   "required": ["id", "type", "bestFor", "requiredFields"],
   "properties": {

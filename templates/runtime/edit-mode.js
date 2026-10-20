@@ -1,6 +1,6 @@
 export function installEditMode({
   root = document,
-  storageKey = `${location.pathname}:sense-deck-edits`,
+  storageKey = `${location.pathname}:jingge-ppt-edits`,
   editableSelector = "[data-editable], h1, h2, h3, p, li, .kicker, .lead, .notes",
   layoutSelector = "[data-layout], .slide, .glass-panel, .bento-card, .metric-card"
 } = {}) {
@@ -39,11 +39,11 @@ export function installEditMode({
 
   function toggleEditMode(force) {
     state.enabled = typeof force === "boolean" ? force : !state.enabled;
-    document.documentElement.classList.toggle("sense-editing", state.enabled);
+    document.documentElement.classList.toggle("jingge-editing", state.enabled);
     toolbar.hidden = !state.enabled;
     root.querySelectorAll(editableSelector).forEach((node) => {
       if (!(node instanceof HTMLElement)) return;
-      if (node.closest(".controls, .speaker-panel, .sense-edit-toolbar")) return;
+      if (node.closest(".controls, .speaker-panel, .jingge-edit-toolbar")) return;
       node.dataset.editable = node.dataset.editable || "text";
       node.contentEditable = String(state.enabled);
       if (state.enabled) ensureEditId(node);
@@ -51,9 +51,9 @@ export function installEditMode({
   }
 
   function selectElement(element) {
-    state.selected?.classList.remove("sense-edit-selected");
+    state.selected?.classList.remove("jingge-edit-selected");
     state.selected = element;
-    element.classList.add("sense-edit-selected");
+    element.classList.add("jingge-edit-selected");
     toolbar.querySelector("[data-selected]").textContent = element.dataset.role || element.dataset.layout || element.className || element.tagName.toLowerCase();
   }
 
@@ -76,7 +76,7 @@ export function installEditMode({
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = "sense-deck-edits.json";
+    link.download = "jingge-ppt-edits.json";
     link.click();
     URL.revokeObjectURL(url);
   }
@@ -88,7 +88,7 @@ export function installEditMode({
 
   function createToolbar() {
     const bar = document.createElement("aside");
-    bar.className = "sense-edit-toolbar";
+    bar.className = "jingge-edit-toolbar";
     bar.hidden = true;
     bar.innerHTML = `
       <strong>EDIT</strong>
@@ -111,11 +111,11 @@ export function installEditMode({
     });
     const style = document.createElement("style");
     style.textContent = `
-      .sense-edit-toolbar{position:fixed;left:18px;top:18px;z-index:9999;display:flex;gap:8px;align-items:center;padding:10px 12px;border:1px solid rgba(255,255,255,.24);border-radius:16px;background:rgba(8,10,16,.72);color:#fff;font:12px system-ui,sans-serif;backdrop-filter:blur(18px);box-shadow:0 18px 50px rgba(0,0,0,.28)}
-      .sense-edit-toolbar[hidden]{display:none}
-      .sense-edit-toolbar button{border:0;border-radius:10px;padding:6px 9px;color:#fff;background:rgba(255,255,255,.13);cursor:pointer}
-      .sense-editing [contenteditable="true"]{outline:1px dashed rgba(112,220,255,.62);outline-offset:3px}
-      .sense-edit-selected{outline:2px solid rgba(255,115,215,.82)!important;outline-offset:5px}
+      .jingge-edit-toolbar{position:fixed;left:18px;top:18px;z-index:9999;display:flex;gap:8px;align-items:center;padding:10px 12px;border:1px solid rgba(255,255,255,.24);border-radius:16px;background:rgba(8,10,16,.72);color:#fff;font:12px system-ui,sans-serif;backdrop-filter:blur(18px);box-shadow:0 18px 50px rgba(0,0,0,.28)}
+      .jingge-edit-toolbar[hidden]{display:none}
+      .jingge-edit-toolbar button{border:0;border-radius:10px;padding:6px 9px;color:#fff;background:rgba(255,255,255,.13);cursor:pointer}
+      .jingge-editing [contenteditable="true"]{outline:1px dashed rgba(112,220,255,.62);outline-offset:3px}
+      .jingge-edit-selected{outline:2px solid rgba(255,115,215,.82)!important;outline-offset:5px}
     `;
     bar.append(style);
     return bar;

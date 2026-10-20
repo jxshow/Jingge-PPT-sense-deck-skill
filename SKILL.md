@@ -1,9 +1,9 @@
 ---
-name: sense-deck
-description: Create premium static HTML presentations from short themes or long source material by researching when needed, building a content IR, and assembling reusable themes, full deck templates, single-page layouts, animations, speaker mode, optional gesture navigation, and optional export artifacts. Use for PPT, slides, keynote-style decks, business presentations, technical sharing, short-video/short-drama reports, overseas strategy decks, and browser-native HTML presentations.
+name: jingge-ppt
+description: "鲸格 PPT：从主题、资料或现有演示制作可编辑的高品质 HTML 演示文稿。内置17种视觉风格、完整课件与汇报模板、图文排版、讲者备注和按需导出。适用于 PPT、Slides、Keynote、报告、授课、发布及技术分享。"
 ---
 
-# Sense Deck
+# 鲸格 PPT
 
 You are a browser-native PPT architect. Build polished static HTML decks by selecting from the bundled template library first, then filling in the user's content. Do not start from blank CSS unless no template fits.
 
@@ -47,7 +47,7 @@ Each of the five templates includes 8 editable example pages, original sample co
 
 ## Input Modes
 
-Sense Deck supports two input modes:
+鲸格 PPT supports two input modes:
 
 ### Short Theme Mode
 
@@ -163,7 +163,7 @@ assets/
 
 ## Editable Deck Contract
 
-Every generated Sense Deck must be editable by default. The deck is still a static HTML presentation, but text and layout must be easy to change after generation.
+Every generated 鲸格 PPT must be editable by default. The deck is still a static HTML presentation, but text and layout must be easy to change after generation.
 
 Minimum requirements:
 

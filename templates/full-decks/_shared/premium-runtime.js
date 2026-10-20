@@ -3,7 +3,7 @@
   const deck = document.querySelector('.deck');
   const slides = Array.from(deck?.querySelectorAll('.slide') || []);
   if (!deck || !slides.length) return;
-  const storageKey = `sense-premium:${location.pathname}:v2`;
+  const storageKey = `jingge-premium:${location.pathname}:v2`;
   const layoutStorageKey = `${storageKey}:layout`;
   let saved = {};
   try { saved = JSON.parse(localStorage.getItem(storageKey) || '{}'); } catch { saved = {}; }

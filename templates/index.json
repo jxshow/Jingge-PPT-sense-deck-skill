@@ -1,5 +1,5 @@
 {
-  "name": "sense-deck-template-library",
+  "name": "jingge-ppt-template-library",
   "version": "0.1.0",
   "workflow": "Read style-routing.json first: honor requested styles and existing deck continuity; for a new unspecified deck select a premium baseline by scenario. Generate content IR, copy a complete matching deck, then fill semantic layouts and optional assets.",
   "catalogs": {
