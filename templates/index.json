@@ -1,7 +1,7 @@
 {
   "name": "sense-deck-template-library",
   "version": "0.1.0",
-  "workflow": "Read this index first, generate content IR, then select a theme, a full deck or single-page layouts, and optional animations before writing content.",
+  "workflow": "Read this index first, generate content IR, then select a theme, a full deck or single-page layouts, and optional animations before writing content. For image-led pages, choose the relationship and actual image count before filling the composition slots.",
   "catalogs": {
     "themes": "themes/theme-catalog.json",
     "fullDecks": "full-decks/deck-catalog.json",
@@ -15,7 +15,8 @@
   },
   "contentIr": {
     "example": "content-ir/content-ir.example.json",
-    "rule": "Generate content IR before rendering HTML, Typst, or export artifacts."
+    "rule": "Generate content IR before rendering HTML, Typst, or export artifacts.",
+    "imageCompositionExample": "content-ir/image-composition.example.json"
   },
   "runtime": {
     "slideLifecycle": "runtime/slide-lifecycle.js",
@@ -53,7 +54,7 @@
   },
   "targetLibraryShape": {
     "fullDecks": 20,
-    "singlePageLayouts": 32,
+    "singlePageLayouts": 42,
     "cssAnimations": 27,
     "canvasFx": 20
   },
@@ -599,6 +600,66 @@
       "id": "noir-growth-story",
       "path": "single-page-layouts/noir-growth-story.html",
       "semanticUse": "Black-bronze magazine data story with three large serif stats, growth curve, and milestone labels"
+    },
+    {
+      "id": "photo-01-hero",
+      "path": "single-page-layouts/photo-01-hero.html",
+      "semanticUse": "主视觉: 主视觉建立记忆点，文字说明它为何重要。",
+      "imageCount": 1
+    },
+    {
+      "id": "photo-02-flank",
+      "path": "single-page-layouts/photo-02-flank.html",
+      "semanticUse": "共同支撑: 两侧图片是证据，中间是共同结论。",
+      "imageCount": 2
+    },
+    {
+      "id": "photo-03-story",
+      "path": "single-page-layouts/photo-03-story.html",
+      "semanticUse": "步骤 / 案例: 每张图片对应一步，每一步配一句说明。",
+      "imageCount": 3
+    },
+    {
+      "id": "photo-04-matrix",
+      "path": "single-page-layouts/photo-04-matrix.html",
+      "semanticUse": "平级证据: 平级案例共享相同的图片尺寸和说明基线。",
+      "imageCount": 4
+    },
+    {
+      "id": "photo-05-focus",
+      "path": "single-page-layouts/photo-05-focus.html",
+      "semanticUse": "主次关系: 用主图建立焦点，辅图提供不同角度的证据。",
+      "imageCount": 5
+    },
+    {
+      "id": "photo-06-hub",
+      "path": "single-page-layouts/photo-06-hub.html",
+      "semanticUse": "中心与支撑: 中心写目标，两侧的六张图解释支持关系。",
+      "imageCount": 6
+    },
+    {
+      "id": "photo-07-cluster",
+      "path": "single-page-layouts/photo-07-cluster.html",
+      "semanticUse": "作品组合: 面积表达重要性，辅图用规则网格保持秩序。",
+      "imageCount": 7
+    },
+    {
+      "id": "photo-08-frame",
+      "path": "single-page-layouts/photo-08-frame.html",
+      "semanticUse": "结论与证据: 左右各四图，中间保留安静的文字区域。",
+      "imageCount": 8
+    },
+    {
+      "id": "photo-09-gallery",
+      "path": "single-page-layouts/photo-09-gallery.html",
+      "semanticUse": "平级成果: 统一格子、间距与说明，让图片成为信息本身。",
+      "imageCount": 9
+    },
+    {
+      "id": "photo-10-gallery",
+      "path": "single-page-layouts/photo-10-gallery.html",
+      "semanticUse": "成果集合: 两排五列适合照片与案例封面，配短标签即可。",
+      "imageCount": 10
     }
   ],
   "animations": [
@@ -617,5 +678,14 @@
       "path": "animations/canvas-fx-pack.js",
       "useWhen": "Register first batch Canvas FX with slide lifecycle"
     }
-  ]
+  ],
+  "guides": {
+    "imageComposition": "../references/image-composition.md"
+  },
+  "components": {
+    "imageComposition": "single-page-layouts/image-composition.css"
+  },
+  "examples": {
+    "imageComposition": "../examples/image-composition/index.html"
+  }
 }

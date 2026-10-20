@@ -1,0 +1,154 @@
+{
+  "title": "八项证据支撑一个判断",
+  "audience": "工作总结 / 产品与战略团队",
+  "theme": "executive-clean",
+  "features": {
+    "gesture": "off",
+    "presenterMode": true,
+    "editable": true
+  },
+  "slides": [
+    {
+      "role": "evidence",
+      "title": "八个案例，验证同一条增长路径",
+      "layout": "photo-08-frame",
+      "theme": "executive-clean",
+      "visibleContent": {
+        "lead": "中心写结论，左右各四个案例提供证据。",
+        "explanation": "此示例以 upload-slots 模式规划八个待上传案例。使用真实素材后切换为 user-supplied，并把 assetStatus 改为 ready。"
+      },
+      "speakerNotes": "示意数据结构，不代表真实案例或已生成的图片。",
+      "visualComposition": {
+        "purpose": "evidence",
+        "imageCount": 8,
+        "readingOrder": "left-to-right",
+        "textZone": "标题在上方；中央正文约 36%；图片说明位于各图下方。",
+        "groupStyle": "orthogonal",
+        "assetStatus": "planned",
+        "images": [
+          {
+            "id": "case-01",
+            "path": "assets/images/case-01.jpg",
+            "slot": "image-01",
+            "kind": "photo",
+            "fit": "cover",
+            "focalPoint": {
+              "x": 50,
+              "y": 50
+            },
+            "priority": "peer",
+            "caption": "案例 01 的证据说明",
+            "alt": "待替换为案例 01 图片的具体内容",
+            "source": "用户提供的案例素材"
+          },
+          {
+            "id": "case-02",
+            "path": "assets/images/case-02.jpg",
+            "slot": "image-02",
+            "kind": "photo",
+            "fit": "cover",
+            "focalPoint": {
+              "x": 50,
+              "y": 50
+            },
+            "priority": "peer",
+            "caption": "案例 02 的证据说明",
+            "alt": "待替换为案例 02 图片的具体内容",
+            "source": "用户提供的案例素材"
+          },
+          {
+            "id": "case-03",
+            "path": "assets/images/case-03.jpg",
+            "slot": "image-03",
+            "kind": "photo",
+            "fit": "cover",
+            "focalPoint": {
+              "x": 50,
+              "y": 50
+            },
+            "priority": "peer",
+            "caption": "案例 03 的证据说明",
+            "alt": "待替换为案例 03 图片的具体内容",
+            "source": "用户提供的案例素材"
+          },
+          {
+            "id": "case-04",
+            "path": "assets/images/case-04.jpg",
+            "slot": "image-04",
+            "kind": "photo",
+            "fit": "cover",
+            "focalPoint": {
+              "x": 50,
+              "y": 50
+            },
+            "priority": "peer",
+            "caption": "案例 04 的证据说明",
+            "alt": "待替换为案例 04 图片的具体内容",
+            "source": "用户提供的案例素材"
+          },
+          {
+            "id": "case-05",
+            "path": "assets/images/case-05.jpg",
+            "slot": "image-05",
+            "kind": "photo",
+            "fit": "cover",
+            "focalPoint": {
+              "x": 50,
+              "y": 50
+            },
+            "priority": "peer",
+            "caption": "案例 05 的证据说明",
+            "alt": "待替换为案例 05 图片的具体内容",
+            "source": "用户提供的案例素材"
+          },
+          {
+            "id": "case-06",
+            "path": "assets/images/case-06.jpg",
+            "slot": "image-06",
+            "kind": "photo",
+            "fit": "cover",
+            "focalPoint": {
+              "x": 50,
+              "y": 50
+            },
+            "priority": "peer",
+            "caption": "案例 06 的证据说明",
+            "alt": "待替换为案例 06 图片的具体内容",
+            "source": "用户提供的案例素材"
+          },
+          {
+            "id": "case-07",
+            "path": "assets/images/case-07.jpg",
+            "slot": "image-07",
+            "kind": "photo",
+            "fit": "cover",
+            "focalPoint": {
+              "x": 50,
+              "y": 50
+            },
+            "priority": "peer",
+            "caption": "案例 07 的证据说明",
+            "alt": "待替换为案例 07 图片的具体内容",
+            "source": "用户提供的案例素材"
+          },
+          {
+            "id": "case-08",
+            "path": "assets/images/case-08.jpg",
+            "slot": "image-08",
+            "kind": "photo",
+            "fit": "cover",
+            "focalPoint": {
+              "x": 50,
+              "y": 50
+            },
+            "priority": "peer",
+            "caption": "案例 08 的证据说明",
+            "alt": "待替换为案例 08 图片的具体内容",
+            "source": "用户提供的案例素材"
+          }
+        ]
+      }
+    }
+  ],
+  "imageCapabilityMode": "upload-slots"
+}

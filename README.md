@@ -5,6 +5,17 @@
 
 这个仓库是完整版 Skill，包含完整模板库和重素材示例，适合本地使用、二次开发、发布为开源 Skill，或作为轻量版/20MB 导入版的上游资源。
 
+## 1–10 张图的图文排版
+
+新增 10 种可复用的图片组合模板，涵盖一图一论点、双图夹心、三联叙事、四图矩阵、一主四辅、六图中心围合、一主六辅、八图两侧围合、九图画廊和十图双排。先按主次、对比、步骤或证据关系选结构，再按实际图片数量装配，配色继续服从用户要求和已有主题。
+
+- [图文排版规则](references/image-composition.md)：标题与正文层级、边距、图间距、说明、照片裁切、截图保真，以及蜂巢/扇形/拼贴的选用边界。
+- [版式预览](examples/image-composition/index.html)：下载或克隆仓库后，用浏览器打开该 HTML，可切换三种配色；预览中的方块是结构示意。
+- `templates/single-page-layouts/photo-*.html` 与 `image-composition.css`：可直接装配的 1–10 图布局片段。
+- `templates/content-ir/image-composition.example.json`：图片用途、数量、阅读顺序、文字区、slot、裁切焦点和说明的 IR 示例。
+
+沿用当前的 `generate` / `user-supplied` / `upload-slots` 图片能力路由；有可用图片时替换规划占位，缺少可靠图片能力时交付写明主题和裁切意图的上传槽。
+
 ## 核心能力
 
 - 从短主题或长资料生成结构完整的演示文稿。

@@ -1,38 +1,297 @@
 {
   "purpose": "Use single-page layouts to fill specialized slide needs after choosing a full deck.",
-  "targetCount": 32,
+  "targetCount": 42,
   "layouts": [
-    { "id": "cover-bento-glass", "status": "implemented", "path": "cover-bento-glass.html", "semanticUse": "Premium opening thesis with device/card visual" },
-    { "id": "market-signal", "status": "implemented", "path": "market-signal.html", "semanticUse": "Three metrics plus one conclusion" },
-    { "id": "semantic-compare", "status": "implemented", "path": "semantic-compare.html", "semanticUse": "Old path vs new path contrast" },
-    { "id": "ai-production-loop", "status": "implemented", "path": "ai-production-loop.html", "semanticUse": "Five-step production or growth loop" },
-    { "id": "roadmap-90-day", "status": "implemented", "path": "roadmap-90-day.html", "semanticUse": "Four-phase execution roadmap" },
-    { "id": "agenda", "status": "implemented", "path": "agenda.html", "semanticUse": "Talk agenda or chapter list" },
-    { "id": "section-divider", "status": "implemented", "path": "section-divider.html", "semanticUse": "Separate major narrative chapters" },
-    { "id": "comparison-2col", "status": "implemented", "path": "comparison-2col.html", "semanticUse": "Binary comparison" },
-    { "id": "comparison-3col", "status": "implemented", "path": "comparison-3col.html", "semanticUse": "Three-option or three-player comparison" },
-    { "id": "timeline", "status": "implemented", "path": "timeline.html", "semanticUse": "Historical evolution or launch schedule" },
-    { "id": "kpi-dashboard", "status": "implemented", "path": "kpi-dashboard.html", "semanticUse": "Business metrics and performance review" },
-    { "id": "quote", "status": "implemented", "path": "quote.html", "semanticUse": "Strong statement or user voice" },
-    { "id": "code", "status": "implemented", "path": "code.html", "semanticUse": "Technical snippet with explanation" },
-    { "id": "architecture", "status": "implemented", "path": "architecture.html", "semanticUse": "System diagram or product architecture" },
-    { "id": "qa", "status": "implemented", "path": "qa.html", "semanticUse": "Q&A slide" },
-    { "id": "thanks", "status": "implemented", "path": "thanks.html", "semanticUse": "Closing and contact" },
-    { "id": "problem-stack", "status": "planned", "semanticUse": "Layered pain points" },
-    { "id": "solution-stack", "status": "planned", "semanticUse": "Layered solution" },
-    { "id": "persona", "status": "planned", "semanticUse": "User or customer profile" },
-    { "id": "case-study", "status": "planned", "semanticUse": "Before/after case narrative" },
-    { "id": "feature-ops-dashboard", "status": "implemented", "path": "feature-ops-dashboard.html", "semanticUse": "Product feature overview with operations dashboard, editable charts, and capability cards" },
-    { "id": "noir-growth-story", "status": "implemented", "path": "noir-growth-story.html", "semanticUse": "Black-bronze editorial data story with three hero stats, growth curve, and milestone labels" },
-    { "id": "pricing", "status": "planned", "semanticUse": "Plans and commercial packaging" },
-    { "id": "risk-board", "status": "implemented", "path": "risk-board.html", "semanticUse": "Risk categories and mitigations" },
-    { "id": "decision-matrix", "status": "planned", "semanticUse": "Choose between options" },
-    { "id": "funnel", "status": "planned", "semanticUse": "Conversion or lifecycle funnel" },
-    { "id": "flywheel", "status": "planned", "semanticUse": "Compounding loop" },
-    { "id": "map", "status": "planned", "semanticUse": "Regional or market expansion" },
-    { "id": "swot", "status": "planned", "semanticUse": "Strengths, weaknesses, opportunities, threats" },
-    { "id": "team", "status": "planned", "semanticUse": "People and roles" },
-    { "id": "demo-frame", "status": "planned", "semanticUse": "Product screenshot or demo stage" },
-    { "id": "checklist", "status": "planned", "semanticUse": "Action checklist or requirements" }
-  ]
+    {
+      "id": "cover-bento-glass",
+      "status": "implemented",
+      "path": "cover-bento-glass.html",
+      "semanticUse": "Premium opening thesis with device/card visual"
+    },
+    {
+      "id": "market-signal",
+      "status": "implemented",
+      "path": "market-signal.html",
+      "semanticUse": "Three metrics plus one conclusion"
+    },
+    {
+      "id": "semantic-compare",
+      "status": "implemented",
+      "path": "semantic-compare.html",
+      "semanticUse": "Old path vs new path contrast"
+    },
+    {
+      "id": "ai-production-loop",
+      "status": "implemented",
+      "path": "ai-production-loop.html",
+      "semanticUse": "Five-step production or growth loop"
+    },
+    {
+      "id": "roadmap-90-day",
+      "status": "implemented",
+      "path": "roadmap-90-day.html",
+      "semanticUse": "Four-phase execution roadmap"
+    },
+    {
+      "id": "agenda",
+      "status": "implemented",
+      "path": "agenda.html",
+      "semanticUse": "Talk agenda or chapter list"
+    },
+    {
+      "id": "section-divider",
+      "status": "implemented",
+      "path": "section-divider.html",
+      "semanticUse": "Separate major narrative chapters"
+    },
+    {
+      "id": "comparison-2col",
+      "status": "implemented",
+      "path": "comparison-2col.html",
+      "semanticUse": "Binary comparison"
+    },
+    {
+      "id": "comparison-3col",
+      "status": "implemented",
+      "path": "comparison-3col.html",
+      "semanticUse": "Three-option or three-player comparison"
+    },
+    {
+      "id": "timeline",
+      "status": "implemented",
+      "path": "timeline.html",
+      "semanticUse": "Historical evolution or launch schedule"
+    },
+    {
+      "id": "kpi-dashboard",
+      "status": "implemented",
+      "path": "kpi-dashboard.html",
+      "semanticUse": "Business metrics and performance review"
+    },
+    {
+      "id": "quote",
+      "status": "implemented",
+      "path": "quote.html",
+      "semanticUse": "Strong statement or user voice"
+    },
+    {
+      "id": "code",
+      "status": "implemented",
+      "path": "code.html",
+      "semanticUse": "Technical snippet with explanation"
+    },
+    {
+      "id": "architecture",
+      "status": "implemented",
+      "path": "architecture.html",
+      "semanticUse": "System diagram or product architecture"
+    },
+    {
+      "id": "qa",
+      "status": "implemented",
+      "path": "qa.html",
+      "semanticUse": "Q&A slide"
+    },
+    {
+      "id": "thanks",
+      "status": "implemented",
+      "path": "thanks.html",
+      "semanticUse": "Closing and contact"
+    },
+    {
+      "id": "problem-stack",
+      "status": "planned",
+      "semanticUse": "Layered pain points"
+    },
+    {
+      "id": "solution-stack",
+      "status": "planned",
+      "semanticUse": "Layered solution"
+    },
+    {
+      "id": "persona",
+      "status": "planned",
+      "semanticUse": "User or customer profile"
+    },
+    {
+      "id": "case-study",
+      "status": "planned",
+      "semanticUse": "Before/after case narrative"
+    },
+    {
+      "id": "feature-ops-dashboard",
+      "status": "implemented",
+      "path": "feature-ops-dashboard.html",
+      "semanticUse": "Product feature overview with operations dashboard, editable charts, and capability cards"
+    },
+    {
+      "id": "noir-growth-story",
+      "status": "implemented",
+      "path": "noir-growth-story.html",
+      "semanticUse": "Black-bronze editorial data story with three hero stats, growth curve, and milestone labels"
+    },
+    {
+      "id": "pricing",
+      "status": "planned",
+      "semanticUse": "Plans and commercial packaging"
+    },
+    {
+      "id": "risk-board",
+      "status": "implemented",
+      "path": "risk-board.html",
+      "semanticUse": "Risk categories and mitigations"
+    },
+    {
+      "id": "decision-matrix",
+      "status": "planned",
+      "semanticUse": "Choose between options"
+    },
+    {
+      "id": "funnel",
+      "status": "planned",
+      "semanticUse": "Conversion or lifecycle funnel"
+    },
+    {
+      "id": "flywheel",
+      "status": "planned",
+      "semanticUse": "Compounding loop"
+    },
+    {
+      "id": "map",
+      "status": "planned",
+      "semanticUse": "Regional or market expansion"
+    },
+    {
+      "id": "swot",
+      "status": "planned",
+      "semanticUse": "Strengths, weaknesses, opportunities, threats"
+    },
+    {
+      "id": "team",
+      "status": "planned",
+      "semanticUse": "People and roles"
+    },
+    {
+      "id": "demo-frame",
+      "status": "planned",
+      "semanticUse": "Product screenshot or demo stage"
+    },
+    {
+      "id": "checklist",
+      "status": "planned",
+      "semanticUse": "Action checklist or requirements"
+    },
+    {
+      "id": "photo-01-hero",
+      "name": "一图一论点",
+      "status": "implemented",
+      "path": "photo-01-hero.html",
+      "semanticUse": "主视觉: 主视觉建立记忆点，文字说明它为何重要。",
+      "imageCount": 1,
+      "purpose": "hero",
+      "stylesheet": "image-composition.css",
+      "guide": "../../references/image-composition.md"
+    },
+    {
+      "id": "photo-02-flank",
+      "name": "双图夹心",
+      "status": "implemented",
+      "path": "photo-02-flank.html",
+      "semanticUse": "共同支撑: 两侧图片是证据，中间是共同结论。",
+      "imageCount": 2,
+      "purpose": "evidence",
+      "stylesheet": "image-composition.css",
+      "guide": "../../references/image-composition.md"
+    },
+    {
+      "id": "photo-03-story",
+      "name": "三联叙事",
+      "status": "implemented",
+      "path": "photo-03-story.html",
+      "semanticUse": "步骤 / 案例: 每张图片对应一步，每一步配一句说明。",
+      "imageCount": 3,
+      "purpose": "sequence",
+      "stylesheet": "image-composition.css",
+      "guide": "../../references/image-composition.md"
+    },
+    {
+      "id": "photo-04-matrix",
+      "name": "四图矩阵",
+      "status": "implemented",
+      "path": "photo-04-matrix.html",
+      "semanticUse": "平级证据: 平级案例共享相同的图片尺寸和说明基线。",
+      "imageCount": 4,
+      "purpose": "evidence",
+      "stylesheet": "image-composition.css",
+      "guide": "../../references/image-composition.md"
+    },
+    {
+      "id": "photo-05-focus",
+      "name": "一主四辅",
+      "status": "implemented",
+      "path": "photo-05-focus.html",
+      "semanticUse": "主次关系: 用主图建立焦点，辅图提供不同角度的证据。",
+      "imageCount": 5,
+      "purpose": "hero",
+      "stylesheet": "image-composition.css",
+      "guide": "../../references/image-composition.md"
+    },
+    {
+      "id": "photo-06-hub",
+      "name": "六图中心围合",
+      "status": "implemented",
+      "path": "photo-06-hub.html",
+      "semanticUse": "中心与支撑: 中心写目标，两侧的六张图解释支持关系。",
+      "imageCount": 6,
+      "purpose": "hub",
+      "stylesheet": "image-composition.css",
+      "guide": "../../references/image-composition.md"
+    },
+    {
+      "id": "photo-07-cluster",
+      "name": "一主六辅",
+      "status": "implemented",
+      "path": "photo-07-cluster.html",
+      "semanticUse": "作品组合: 面积表达重要性，辅图用规则网格保持秩序。",
+      "imageCount": 7,
+      "purpose": "gallery",
+      "stylesheet": "image-composition.css",
+      "guide": "../../references/image-composition.md"
+    },
+    {
+      "id": "photo-08-frame",
+      "name": "八图两侧围合",
+      "status": "implemented",
+      "path": "photo-08-frame.html",
+      "semanticUse": "结论与证据: 左右各四图，中间保留安静的文字区域。",
+      "imageCount": 8,
+      "purpose": "evidence",
+      "stylesheet": "image-composition.css",
+      "guide": "../../references/image-composition.md"
+    },
+    {
+      "id": "photo-09-gallery",
+      "name": "九图画廊",
+      "status": "implemented",
+      "path": "photo-09-gallery.html",
+      "semanticUse": "平级成果: 统一格子、间距与说明，让图片成为信息本身。",
+      "imageCount": 9,
+      "purpose": "gallery",
+      "stylesheet": "image-composition.css",
+      "guide": "../../references/image-composition.md"
+    },
+    {
+      "id": "photo-10-gallery",
+      "name": "十图双排",
+      "status": "implemented",
+      "path": "photo-10-gallery.html",
+      "semanticUse": "成果集合: 两排五列适合照片与案例封面，配短标签即可。",
+      "imageCount": 10,
+      "purpose": "gallery",
+      "stylesheet": "image-composition.css",
+      "guide": "../../references/image-composition.md"
+    }
+  ],
+  "compositionGuide": "../../references/image-composition.md",
+  "imageCompositionCss": "image-composition.css"
 }

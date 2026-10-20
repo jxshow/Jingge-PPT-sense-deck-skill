@@ -1,0 +1,106 @@
+/* Load after the host deck CSS. Visibility/navigation remain owned by its runtime.
+   Theme bridge: --jg-bg, --jg-ink, --jg-muted, --jg-accent, --jg-surface,
+   --jg-line, --jg-radius, --jg-gap. Placeholder blocks are schematic only. */
+.jg-slide {
+  --jg-bg: var(--bg, #f7f5f0);
+  --jg-ink: var(--ink, #282722);
+  --jg-muted: var(--muted, #68675f);
+  --jg-accent: var(--mint, var(--blue, #a45732));
+  --jg-surface: var(--glass, #eeece5);
+  --jg-line: var(--line, #d7d4ca);
+  --jg-radius: var(--radius, 12px);
+  --jg-gap: 1.4cqw;
+  container-type: inline-size;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 2cqw;
+  padding: 4% 5%;
+  color: var(--jg-ink);
+  background: var(--jg-bg);
+  font-family: var(--font, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif);
+}
+.jg-slide *, .jg-slide *::before, .jg-slide *::after { box-sizing: border-box; }
+.jg-slide h2, .jg-slide h3, .jg-slide p, .jg-slide figure { margin: 0; }
+.jg-slide h2 { max-width: none; font-size: 3.5cqw; line-height: 1.2; font-weight: 750; }
+.jg-slide h3 { font-size: 2.1cqw; line-height: 1.3; }
+.jg-slide p { font-size: 1.7cqw; line-height: 1.5; color: var(--jg-muted); }
+.jg-head { display: grid; gap: .7cqw; border-bottom: 1px solid var(--jg-line); padding-bottom: 1cqw; }
+.jg-kicker { color: var(--jg-accent); font-size: 1.25cqw; letter-spacing: .08em; font-weight: 650; }
+.jg-body { min-height: 0; min-width: 0; }
+.jg-copy { display: grid; align-content: center; gap: 1.5cqw; min-width: 0; }
+.jg-copy strong { color: var(--jg-accent); }
+.jg-callout { padding: 1.5cqw; background: var(--jg-surface); border: 1px solid var(--jg-line); border-radius: var(--jg-radius); }
+.jg-gallery { display: grid; gap: var(--jg-gap); min-height: 0; min-width: 0; }
+.jg-photo { display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: .65cqw; min-height: 0; min-width: 0; }
+.jg-media { position: relative; min-height: 0; overflow: hidden; border-radius: var(--jg-radius); background: var(--jg-surface); border: 1px solid var(--jg-line); }
+.jg-media img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: var(--jg-focal, 50% 50%); }
+.jg-media[data-fit="contain"] img { object-fit: contain; }
+.jg-slide figcaption { font-size: 1.35cqw; line-height: 1.4; color: var(--jg-muted); }
+.jg-placeholder { height: 100%; min-height: 5cqw; display: grid; place-content: center; gap: .4cqw; text-align: center; color: var(--jg-accent); background: linear-gradient(145deg, transparent, color-mix(in srgb, var(--jg-accent) 12%, transparent)); }
+.jg-placeholder b { font-size: 3cqw; font-weight: 500; }
+.jg-placeholder span { font-size: 1.1cqw; }
+.jg-foot { display: flex; justify-content: space-between; gap: 2cqw; font-size: 1.1cqw; color: var(--jg-muted); }
+.jg-slide aside.notes { display: none; }
+
+/* One image; anchor and explanation. */
+.jg-hero { display: grid; grid-template-columns: .44fr .56fr; gap: 2.5cqw; }
+/* Two images share a central conclusion; DOM order follows left-to-right. */
+.jg-flank { display: grid; grid-template-columns: .26fr .48fr .26fr; gap: 2cqw; }
+.jg-flank .jg-copy { text-align: center; padding: 0 1cqw; }
+/* Three equal stages; captions remain outside the image layer. */
+.jg-story { display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 1.8cqw; }
+.jg-story .jg-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+/* Four peer examples; do not imply quadrants unless content supports them. */
+.jg-matrix { display: grid; grid-template-columns: .58fr .42fr; gap: 2.5cqw; }
+.jg-matrix .jg-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); }
+/* Five images; explicitly different priorities. */
+.jg-focus { display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 1.8cqw; }
+.jg-focus .jg-gallery { grid-template-columns: .48fr .26fr .26fr; grid-template-rows: repeat(2, minmax(0, 1fr)); }
+.jg-focus .jg-photo:first-child { grid-row: 1 / 3; }
+/* Six peers around a text hub. Center text is not an image slot. */
+.jg-hub { display: grid; grid-template-columns: .3fr .4fr .3fr; gap: 2cqw; }
+.jg-hub .jg-gallery { grid-template-rows: repeat(3, minmax(0, 1fr)); }
+.jg-hub .jg-copy { text-align: center; padding: 2cqw; }
+/* Seven images; one anchor plus six supporting views. */
+.jg-cluster { display: grid; grid-template-columns: .45fr .55fr; gap: 2cqw; }
+.jg-cluster > .jg-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); }
+/* Eight pieces of evidence; neutral central text safe zone. */
+.jg-frame { display: grid; grid-template-columns: .32fr .36fr .32fr; gap: 2cqw; }
+.jg-frame .jg-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); }
+.jg-frame .jg-copy { text-align: center; padding: 0 1cqw; }
+.jg-nine { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(3, minmax(0, 1fr)); }
+.jg-ten { grid-template-columns: repeat(5, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); }
+
+/* Optional whole-group tilt for photos; opt in only after checking crop buffer. */
+.jg-gallery[data-tilt="gentle"] { transform: rotate(-2deg); transform-origin: center; margin: 1.5cqw; }
+
+@media screen and (max-width: 900px) {
+  .jg-slide { container-type: normal; --jg-gap: 14px; grid-template-rows: auto auto auto; gap: 22px; padding: 28px 20px 88px; }
+  .jg-slide h2 { font-size: 30px; }
+  .jg-slide h3 { font-size: 22px; }
+  .jg-slide p { font-size: 18px; }
+  .jg-kicker, .jg-slide figcaption, .jg-foot { font-size: 14px; }
+  .jg-head { gap: 10px; padding-bottom: 14px; }
+  .jg-body { height: auto; }
+  .jg-copy { gap: 18px; padding: 0; text-align: left; }
+  .jg-callout { padding: 18px; }
+  .jg-media { width: 100%; min-width: 0; min-height: 150px; aspect-ratio: 4 / 3; }
+  .jg-photo { gap: 8px; }
+  .jg-placeholder { min-height: 150px; gap: 6px; }
+  .jg-placeholder b { font-size: 30px; }
+  .jg-placeholder span { font-size: 14px; }
+  .jg-hero, .jg-flank, .jg-matrix, .jg-hub, .jg-cluster, .jg-frame { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+  .jg-flank .jg-copy, .jg-hub .jg-copy, .jg-frame .jg-copy { grid-row: 1; text-align: left; padding: 0; }
+  .jg-hub .jg-gallery { grid-template-rows: auto; grid-template-columns: minmax(0, 1fr); }
+  .jg-story .jg-gallery { grid-template-columns: minmax(0, 1fr); }
+  .jg-focus { grid-template-rows: auto auto; gap: 18px; }
+  .jg-focus .jg-gallery, .jg-cluster > .jg-gallery, .jg-nine, .jg-ten { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; grid-auto-rows: auto; }
+  .jg-focus .jg-photo:first-child { grid-row: auto; grid-column: 1 / -1; }
+  .jg-frame .jg-gallery, .jg-matrix .jg-gallery { grid-template-rows: none; }
+  .jg-gallery[data-tilt="gentle"] { transform: none; margin: 0; }
+  .jg-foot { flex-wrap: wrap; gap: 10px; }
+}
+
+@media print {
+  .jg-slide { break-after: page; }
+  .jg-gallery[data-tilt="gentle"] { transform: none; }
+}

@@ -17,7 +17,7 @@ You are a browser-native PPT architect. Build polished static HTML decks by sele
    - `templates/animations/animation-catalog.json` for CSS and Canvas FX.
 4. Choose one theme from `templates/themes/`.
 5. Choose the closest full deck from `templates/full-decks/` when the user's task matches an existing scenario.
-6. Use `templates/single-page-layouts/` to add or replace individual slides.
+6. Use `templates/single-page-layouts/` to add or replace individual slides. For image-led pages, read [references/image-composition.md](references/image-composition.md), choose the semantic relationship and actual image count, then select a `photo-*` fragment and its composition CSS.
 7. Resolve the image asset mode before visual implementation: generated images, user-supplied images, or blank upload slots.
 8. Add motion from `templates/animations/` only when it helps explain meaning.
 9. Wire animation lifecycle through `templates/runtime/slide-lifecycle.js`.
@@ -119,6 +119,20 @@ Rules for `upload-slots`:
 - Code-native charts, diagrams, icons, rules, and layout frames may still use HTML/CSS/SVG. The blank-slot rule applies to photographic, cinematic, illustrative, product, and complex raster content.
 
 Never downgrade from `generate` to `upload-slots` merely to save effort when a capable image tool is available. Never attempt poor-quality generation merely because the current model has a generic image endpoint.
+
+## Image Composition and Page Formatting
+
+For photos, screenshots, case evidence, work summaries, and slides with multiple images, read [references/image-composition.md](references/image-composition.md). It defines title/body/caption hierarchy, spacing, focal-point cropping, and 1–10 image compositions adapted from the user's tutorial references.
+
+Choose by meaning first: hero, comparison, sequence, peer evidence, central hub, or gallery. Count the actual useful images next. Use `photo-01-hero` through `photo-10-gallery` from the layout catalog as starting structures; do not pad the count with repeated or irrelevant images. Split dense screenshot evidence when text would become unreadable.
+
+Keep layout independent of palette. Reuse the selected theme through `--jg-*` tokens in [image-composition.css](templates/single-page-layouts/image-composition.css); blue/white, serif headings, wave masks, hexagons, and tilted collages are optional style choices. Preserve the deck's established title baseline, typography, margins, and caption style.
+
+Record `slides[].visualComposition` with image count, purpose, reading order, text safe zone, and per-image slot/path/type/fit/focal point/alt/caption. Use `cover` for photos with inspected focal points, `contain` for UI screenshots and charts unless a deliberate crop is documented. See [the composition IR example](templates/content-ir/image-composition.example.json) and the schema. Text and captions stay editable; source images stay intact.
+
+Any per-illustration width guidance applies to individual spot illustrations. A planned photo comparison, gallery, or multi-image evidence group may occupy a larger image region; judge the group's size against the slide role, text density, and readability. Rich imagery does not require heavy ornament. Complex fan, honeycomb, or tilted forms should clarify the relationship and have a simpler rectangular fallback for mobile and export.
+
+Follow `Image Capability Routing` for every slot. In `generate` or `user-supplied` mode, replace schematic blocks with inspected local images. In `upload-slots` mode, turn them into intentional upload slots with subject, aspect ratio, and crop instructions; do not treat generic numbered planning blocks as finished photographic assets.
 
 ## Raster Decor Asset Pipeline
 
@@ -245,7 +259,7 @@ Target deck set:
 
 `templates/single-page-layouts/` contains reusable single-slide layouts with realistic example data. Use these when a full deck is close but one slide needs a specialized structure.
 
-Target layout set: 32 layouts.
+Target layout set: 32 existing layouts plus 10 image-composition layouts (42 total catalog targets; some existing layouts remain planned).
 
 Examples:
 
@@ -261,7 +275,7 @@ Examples:
 - `qa.html`
 - `thanks.html`
 
-When adding a new layout, include sample content inside the HTML so the agent can infer how to fill it.
+When adding a new layout, include sample content inside the HTML so the agent can infer how to fill it. The `photo-*` fragments include schematic image slots for 1–10 images. Load `image-composition.css` after the host deck CSS; keep navigation and slide visibility owned by the existing runtime. Resolve these slots according to `imageCapabilityMode` before delivery.
 
 ### Animations Are Components With Lifecycles
 
@@ -386,6 +400,7 @@ Before delivery:
 - Test `S` presenter mode.
 - Test mobile/narrow viewport enough to catch text overflow.
 - Confirm console has no errors.
+- For image-composition pages, confirm `imageCount`, IR array length, and rendered slots agree; check reading order, title/body safe zones, consistent gaps/captions, crop focal points, and screenshot legibility at desktop and narrow widths. Resolve generic schematic blocks into real assets or intentional upload slots according to `Image Capability Routing`.
 - If `gesture != off`, verify camera permission is requested only after the user toggles gesture mode.
 - If Typst export is requested, generate and inspect the PDF output separately from the HTML deck.
 
@@ -426,6 +441,11 @@ This skill currently includes:
 - `templates/full-decks/ai-short-drama-overseas/`
 - `templates/full-decks/editorial-cinematic-report/`
 - `templates/single-page-layouts/layout-catalog.json`
+- `references/image-composition.md`
+- `templates/single-page-layouts/image-composition.css`
+- `templates/single-page-layouts/photo-01-hero.html` through `photo-10-gallery.html`
+- `templates/content-ir/image-composition.example.json`
+- `examples/image-composition/index.html`
 - `templates/single-page-layouts/cover-bento-glass.html`
 - `templates/single-page-layouts/layouts.css`
 - `templates/single-page-layouts/agenda.html`

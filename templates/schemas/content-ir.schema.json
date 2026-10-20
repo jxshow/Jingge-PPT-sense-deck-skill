@@ -2,45 +2,108 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Sense Deck Content IR",
   "type": "object",
-  "required": ["title", "audience", "theme", "imageCapabilityMode", "features", "slides"],
+  "required": [
+    "title",
+    "audience",
+    "theme",
+    "imageCapabilityMode",
+    "features",
+    "slides"
+  ],
   "properties": {
-    "title": { "type": "string" },
-    "subtitle": { "type": "string" },
-    "audience": { "type": "string" },
-    "scenario": { "type": "string" },
-    "tone": { "type": "string" },
-    "language": { "type": "string" },
-    "theme": { "type": "string" },
-    "imageCapabilityMode": { "enum": ["generate", "user-supplied", "upload-slots"] },
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
+    },
+    "audience": {
+      "type": "string"
+    },
+    "scenario": {
+      "type": "string"
+    },
+    "tone": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string"
+    },
+    "theme": {
+      "type": "string"
+    },
+    "imageCapabilityMode": {
+      "enum": [
+        "generate",
+        "user-supplied",
+        "upload-slots"
+      ]
+    },
     "features": {
       "type": "object",
-      "required": ["gesture", "presenterMode"],
+      "required": [
+        "gesture",
+        "presenterMode"
+      ],
       "properties": {
-        "gesture": { "enum": ["off", "motion-lite", "mediapipe-hand"] },
-        "presenterMode": { "type": "boolean" },
-        "editable": { "type": "boolean" },
-        "typstHandout": { "type": "boolean" }
+        "gesture": {
+          "enum": [
+            "off",
+            "motion-lite",
+            "mediapipe-hand"
+          ]
+        },
+        "presenterMode": {
+          "type": "boolean"
+        },
+        "editable": {
+          "type": "boolean"
+        },
+        "typstHandout": {
+          "type": "boolean"
+        }
       }
     },
     "decorAssets": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["id", "path", "semanticUse"],
+        "required": [
+          "id",
+          "path",
+          "semanticUse"
+        ],
         "properties": {
-          "id": { "type": "string" },
-          "path": { "type": "string" },
-          "source": { "type": "string" },
-          "semanticUse": { "type": "string" },
-          "fallback": { "type": "string" }
+          "id": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string"
+          },
+          "semanticUse": {
+            "type": "string"
+          },
+          "fallback": {
+            "type": "string"
+          }
         }
       }
     },
     "sourceSummary": {
       "type": "object",
       "properties": {
-        "thesis": { "type": "string" },
-        "keyArguments": { "type": "array", "items": { "type": "string" } }
+        "thesis": {
+          "type": "string"
+        },
+        "keyArguments": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       }
     },
     "slides": {
@@ -48,25 +111,207 @@
       "minItems": 1,
       "items": {
         "type": "object",
-        "required": ["role", "title", "layout", "theme", "visibleContent", "speakerNotes"],
+        "required": [
+          "role",
+          "title",
+          "layout",
+          "theme",
+          "visibleContent",
+          "speakerNotes"
+        ],
         "properties": {
-          "role": { "type": "string" },
-          "title": { "type": "string" },
-          "layout": { "type": "string" },
-          "theme": { "type": "string" },
-          "animations": { "type": "array", "items": { "type": "string" } },
-          "canvasFx": { "type": ["string", "null"] },
-          "decorAssets": { "type": "array", "items": { "type": "string" } },
+          "role": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "layout": {
+            "type": "string"
+          },
+          "theme": {
+            "type": "string"
+          },
+          "animations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "canvasFx": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "decorAssets": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
           "editable": {
             "type": "object",
             "properties": {
-              "text": { "type": "boolean" },
-              "layout": { "type": "boolean" },
-              "notes": { "type": "boolean" }
+              "text": {
+                "type": "boolean"
+              },
+              "layout": {
+                "type": "boolean"
+              },
+              "notes": {
+                "type": "boolean"
+              }
             }
           },
-          "visibleContent": { "type": "object" },
-          "speakerNotes": { "type": "string" }
+          "visibleContent": {
+            "type": "object"
+          },
+          "speakerNotes": {
+            "type": "string"
+          },
+          "visualComposition": {
+            "$ref": "#/$defs/visualComposition"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "visualComposition": {
+      "type": "object",
+      "required": [
+        "purpose",
+        "imageCount",
+        "readingOrder",
+        "textZone",
+        "images"
+      ],
+      "properties": {
+        "purpose": {
+          "enum": [
+            "hero",
+            "comparison",
+            "sequence",
+            "evidence",
+            "hub",
+            "gallery"
+          ]
+        },
+        "imageCount": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Equals the number of image slots; text hubs and icons do not count."
+        },
+        "readingOrder": {
+          "enum": [
+            "left-to-right",
+            "top-to-bottom",
+            "clockwise",
+            "semantic-pairs"
+          ]
+        },
+        "textZone": {
+          "type": "string",
+          "description": "Placement and approximate width of title/body/captions, separate from image masks."
+        },
+        "groupStyle": {
+          "enum": [
+            "orthogonal",
+            "gentle-tilt",
+            "honeycomb",
+            "fan",
+            "mosaic"
+          ]
+        },
+        "assetStatus": {
+          "enum": [
+            "planned",
+            "ready"
+          ]
+        },
+        "images": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "path",
+              "slot",
+              "kind",
+              "fit",
+              "focalPoint",
+              "alt"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "slot": {
+                "type": "string",
+                "minLength": 1
+              },
+              "kind": {
+                "enum": [
+                  "photo",
+                  "screenshot",
+                  "chart",
+                  "illustration"
+                ]
+              },
+              "fit": {
+                "enum": [
+                  "cover",
+                  "contain"
+                ]
+              },
+              "focalPoint": {
+                "type": "object",
+                "required": [
+                  "x",
+                  "y"
+                ],
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100
+                  },
+                  "y": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100
+                  }
+                },
+                "description": "Percentage coordinates for CSS object-position; inspect each asset."
+              },
+              "priority": {
+                "enum": [
+                  "primary",
+                  "supporting",
+                  "peer"
+                ]
+              },
+              "caption": {
+                "type": "string"
+              },
+              "alt": {
+                "type": "string"
+              },
+              "source": {
+                "type": "string"
+              },
+              "cropReason": {
+                "type": "string"
+              }
+            }
+          }
         }
       }
     }

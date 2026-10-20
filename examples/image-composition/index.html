@@ -1,0 +1,577 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>鲸格PPT · 多图版式预览</title><style>/* Load after the host deck CSS. Visibility/navigation remain owned by its runtime.
+   Theme bridge: --jg-bg, --jg-ink, --jg-muted, --jg-accent, --jg-surface,
+   --jg-line, --jg-radius, --jg-gap. Placeholder blocks are schematic only. */
+.jg-slide {
+  --jg-bg: var(--bg, #f7f5f0);
+  --jg-ink: var(--ink, #282722);
+  --jg-muted: var(--muted, #68675f);
+  --jg-accent: var(--mint, var(--blue, #a45732));
+  --jg-surface: var(--glass, #eeece5);
+  --jg-line: var(--line, #d7d4ca);
+  --jg-radius: var(--radius, 12px);
+  --jg-gap: 1.4cqw;
+  container-type: inline-size;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 2cqw;
+  padding: 4% 5%;
+  color: var(--jg-ink);
+  background: var(--jg-bg);
+  font-family: var(--font, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif);
+}
+.jg-slide *, .jg-slide *::before, .jg-slide *::after { box-sizing: border-box; }
+.jg-slide h2, .jg-slide h3, .jg-slide p, .jg-slide figure { margin: 0; }
+.jg-slide h2 { max-width: none; font-size: 3.5cqw; line-height: 1.2; font-weight: 750; }
+.jg-slide h3 { font-size: 2.1cqw; line-height: 1.3; }
+.jg-slide p { font-size: 1.7cqw; line-height: 1.5; color: var(--jg-muted); }
+.jg-head { display: grid; gap: .7cqw; border-bottom: 1px solid var(--jg-line); padding-bottom: 1cqw; }
+.jg-kicker { color: var(--jg-accent); font-size: 1.25cqw; letter-spacing: .08em; font-weight: 650; }
+.jg-body { min-height: 0; min-width: 0; }
+.jg-copy { display: grid; align-content: center; gap: 1.5cqw; min-width: 0; }
+.jg-copy strong { color: var(--jg-accent); }
+.jg-callout { padding: 1.5cqw; background: var(--jg-surface); border: 1px solid var(--jg-line); border-radius: var(--jg-radius); }
+.jg-gallery { display: grid; gap: var(--jg-gap); min-height: 0; min-width: 0; }
+.jg-photo { display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: .65cqw; min-height: 0; min-width: 0; }
+.jg-media { position: relative; min-height: 0; overflow: hidden; border-radius: var(--jg-radius); background: var(--jg-surface); border: 1px solid var(--jg-line); }
+.jg-media img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: var(--jg-focal, 50% 50%); }
+.jg-media[data-fit="contain"] img { object-fit: contain; }
+.jg-slide figcaption { font-size: 1.35cqw; line-height: 1.4; color: var(--jg-muted); }
+.jg-placeholder { height: 100%; min-height: 5cqw; display: grid; place-content: center; gap: .4cqw; text-align: center; color: var(--jg-accent); background: linear-gradient(145deg, transparent, color-mix(in srgb, var(--jg-accent) 12%, transparent)); }
+.jg-placeholder b { font-size: 3cqw; font-weight: 500; }
+.jg-placeholder span { font-size: 1.1cqw; }
+.jg-foot { display: flex; justify-content: space-between; gap: 2cqw; font-size: 1.1cqw; color: var(--jg-muted); }
+.jg-slide aside.notes { display: none; }
+
+/* One image; anchor and explanation. */
+.jg-hero { display: grid; grid-template-columns: .44fr .56fr; gap: 2.5cqw; }
+/* Two images share a central conclusion; DOM order follows left-to-right. */
+.jg-flank { display: grid; grid-template-columns: .26fr .48fr .26fr; gap: 2cqw; }
+.jg-flank .jg-copy { text-align: center; padding: 0 1cqw; }
+/* Three equal stages; captions remain outside the image layer. */
+.jg-story { display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 1.8cqw; }
+.jg-story .jg-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+/* Four peer examples; do not imply quadrants unless content supports them. */
+.jg-matrix { display: grid; grid-template-columns: .58fr .42fr; gap: 2.5cqw; }
+.jg-matrix .jg-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); }
+/* Five images; explicitly different priorities. */
+.jg-focus { display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 1.8cqw; }
+.jg-focus .jg-gallery { grid-template-columns: .48fr .26fr .26fr; grid-template-rows: repeat(2, minmax(0, 1fr)); }
+.jg-focus .jg-photo:first-child { grid-row: 1 / 3; }
+/* Six peers around a text hub. Center text is not an image slot. */
+.jg-hub { display: grid; grid-template-columns: .3fr .4fr .3fr; gap: 2cqw; }
+.jg-hub .jg-gallery { grid-template-rows: repeat(3, minmax(0, 1fr)); }
+.jg-hub .jg-copy { text-align: center; padding: 2cqw; }
+/* Seven images; one anchor plus six supporting views. */
+.jg-cluster { display: grid; grid-template-columns: .45fr .55fr; gap: 2cqw; }
+.jg-cluster > .jg-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); }
+/* Eight pieces of evidence; neutral central text safe zone. */
+.jg-frame { display: grid; grid-template-columns: .32fr .36fr .32fr; gap: 2cqw; }
+.jg-frame .jg-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); }
+.jg-frame .jg-copy { text-align: center; padding: 0 1cqw; }
+.jg-nine { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(3, minmax(0, 1fr)); }
+.jg-ten { grid-template-columns: repeat(5, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); }
+
+/* Optional whole-group tilt for photos; opt in only after checking crop buffer. */
+.jg-gallery[data-tilt="gentle"] { transform: rotate(-2deg); transform-origin: center; margin: 1.5cqw; }
+
+@media screen and (max-width: 900px) {
+  .jg-slide { container-type: normal; --jg-gap: 14px; grid-template-rows: auto auto auto; gap: 22px; padding: 28px 20px 88px; }
+  .jg-slide h2 { font-size: 30px; }
+  .jg-slide h3 { font-size: 22px; }
+  .jg-slide p { font-size: 18px; }
+  .jg-kicker, .jg-slide figcaption, .jg-foot { font-size: 14px; }
+  .jg-head { gap: 10px; padding-bottom: 14px; }
+  .jg-body { height: auto; }
+  .jg-copy { gap: 18px; padding: 0; text-align: left; }
+  .jg-callout { padding: 18px; }
+  .jg-media { width: 100%; min-width: 0; min-height: 150px; aspect-ratio: 4 / 3; }
+  .jg-photo { gap: 8px; }
+  .jg-placeholder { min-height: 150px; gap: 6px; }
+  .jg-placeholder b { font-size: 30px; }
+  .jg-placeholder span { font-size: 14px; }
+  .jg-hero, .jg-flank, .jg-matrix, .jg-hub, .jg-cluster, .jg-frame { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+  .jg-flank .jg-copy, .jg-hub .jg-copy, .jg-frame .jg-copy { grid-row: 1; text-align: left; padding: 0; }
+  .jg-hub .jg-gallery { grid-template-rows: auto; grid-template-columns: minmax(0, 1fr); }
+  .jg-story .jg-gallery { grid-template-columns: minmax(0, 1fr); }
+  .jg-focus { grid-template-rows: auto auto; gap: 18px; }
+  .jg-focus .jg-gallery, .jg-cluster > .jg-gallery, .jg-nine, .jg-ten { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; grid-auto-rows: auto; }
+  .jg-focus .jg-photo:first-child { grid-row: auto; grid-column: 1 / -1; }
+  .jg-frame .jg-gallery, .jg-matrix .jg-gallery { grid-template-rows: none; }
+  .jg-gallery[data-tilt="gentle"] { transform: none; margin: 0; }
+  .jg-foot { flex-wrap: wrap; gap: 10px; }
+}
+
+@media print {
+  .jg-slide { break-after: page; }
+  .jg-gallery[data-tilt="gentle"] { transform: none; }
+}
+
+
+:root { --bg:#f7f5f0; --ink:#282722; --muted:#68675f; --mint:#a45732; --glass:#efede6; --line:#d7d4ca; --radius:12px; }
+* {box-sizing:border-box} body {margin:0;background:color-mix(in srgb,var(--bg) 85%,var(--ink));color:var(--ink);font-family:"PingFang SC",system-ui,sans-serif}
+.intro,.atlas {width:min(1320px,94vw);margin:0 auto}.intro{padding:44px 0 24px}.intro h1{font-size:34px;margin:0 0 12px}.intro p{line-height:1.8;margin:0;max-width:970px}.choices{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0}.choices button{padding:9px 16px;border:1px solid #b9b5ac;border-radius:99px;cursor:pointer;background:#f7f5f0;color:#282722}.choices button[aria-pressed=true]{background:#282722;color:white}.atlas{padding-bottom:50px}.sample{margin:0 0 34px}.sample>h2{font-size:20px;font-weight:500;margin:0 0 12px}.sample .jg-slide{position:relative;display:grid;width:100%;height:auto;aspect-ratio:16/9;box-shadow:0 12px 36px #28272212;border:1px solid var(--line);border-radius:16px}.sample .jg-slide:before{display:none} .sample .jg-slide h2 {letter-spacing:0}.sample .jg-slide {padding:3.5% 4.5%}
+@media(max-width:900px){.intro{padding-top:28px}.intro h1{font-size:26px}.sample .jg-slide{aspect-ratio:auto;min-height:0;padding:24px 18px}.intro p{font-size:15px}}
+@media print{.intro{display:none}.sample{break-after:page;margin:0}.sample>h2{display:none}.atlas{width:100%;padding:0}.sample .jg-slide{box-shadow:none;border-radius:0}@page{size:landscape;margin:0}}
+</style></head><body><header class="intro"><h1>鲸格PPT · 1–10 张图版式</h1><p>从教程中提炼结构，保留鲸格的内容判断。图片方块是示意占位，展示主次、比例、间距和文字安全区；制作成品时替换为真实图片。蜂巢、扇形与倾斜拼贴按内容选择。配色可切换，结构保持一致。</p><div class="choices" aria-label="选择配色"><button data-theme="warm" aria-pressed="true">暖纸陶色</button><button data-theme="green" aria-pressed="false">浅色墨绿</button><button data-theme="dark" aria-pressed="false">深色冷灰</button></div></header><main class="atlas"><article class="sample" id="photo-01-hero"><h2>1 张图 · 一图一论点 / 主视觉</h2><!-- Fragment: load image-composition.css after the host deck CSS. Count: 1; purpose: hero.
+     Placeholder media is for layout planning only. Replace it before delivering a deck. -->
+<section class="slide jg-slide" data-layout="photo-01-hero" data-title="一个重点，配一张能说明它的图" data-image-count="1">
+  <header class="jg-head" data-role="title-zone">
+    <span class="jg-kicker" data-editable data-field="visibleContent.kicker">01 / 一图一论点</span>
+    <h2 data-editable data-field="title">一个重点，配一张能说明它的图</h2>
+  </header>
+  <div class="jg-body jg-hero"><article class="jg-copy" data-role="text-zone">
+  <h3 data-editable data-field="visibleContent.lead">主视觉建立记忆点，文字说明它为何重要。</h3>
+  <p data-editable data-field="visibleContent.explanation">正文与主图分区，保留清晰的视线入口。</p>
+  <p class="jg-callout" data-editable data-field="visibleContent.takeaway"><strong>结论优先</strong><br>图片与文字共同解释一个重点。</p>
+</article><figure class="jg-photo" data-role="image" data-image-slot="image-01">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 01 的示意占位"><b>01</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.0.caption">证据 01 · 用一句话说明它的用途</figcaption>
+</figure></div>
+  <footer class="jg-foot"><span data-editable data-field="visibleContent.source">示意模板 · 以实际图片和文案替换</span><span data-editable data-field="visibleContent.pageNumber">01</span></footer>
+  <aside class="notes" data-field="speakerNotes">主视觉建立记忆点，文字说明它为何重要。正文与主图分区，保留清晰的视线入口。配色接入既有主题，不固定为蓝白色。</aside>
+</section>
+</article><article class="sample" id="photo-02-flank"><h2>2 张图 · 双图夹心 / 共同支撑</h2><!-- Fragment: load image-composition.css after the host deck CSS. Count: 2; purpose: evidence.
+     Placeholder media is for layout planning only. Replace it before delivering a deck. -->
+<section class="slide jg-slide" data-layout="photo-02-flank" data-title="两个场景，支撑同一个判断" data-image-count="2">
+  <header class="jg-head" data-role="title-zone">
+    <span class="jg-kicker" data-editable data-field="visibleContent.kicker">02 / 双图夹心</span>
+    <h2 data-editable data-field="title">两个场景，支撑同一个判断</h2>
+  </header>
+  <div class="jg-body jg-flank"><figure class="jg-photo" data-role="image" data-image-slot="image-01">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 01 的示意占位"><b>01</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.0.caption">证据 01 · 用一句话说明它的用途</figcaption>
+</figure><article class="jg-copy" data-role="text-zone">
+  <h3 data-editable data-field="visibleContent.lead">两侧图片是证据，中间是共同结论。</h3>
+  <p data-editable data-field="visibleContent.explanation">若要讲前后对比，改为同尺度的左右两栏。</p>
+  <p class="jg-callout" data-editable data-field="visibleContent.takeaway"><strong>结论优先</strong><br>图片与文字共同解释一个重点。</p>
+</article><figure class="jg-photo" data-role="image" data-image-slot="image-02">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 02 的示意占位"><b>02</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.1.caption">证据 02 · 用一句话说明它的用途</figcaption>
+</figure></div>
+  <footer class="jg-foot"><span data-editable data-field="visibleContent.source">示意模板 · 以实际图片和文案替换</span><span data-editable data-field="visibleContent.pageNumber">01</span></footer>
+  <aside class="notes" data-field="speakerNotes">两侧图片是证据，中间是共同结论。若要讲前后对比，改为同尺度的左右两栏。配色接入既有主题，不固定为蓝白色。</aside>
+</section>
+</article><article class="sample" id="photo-03-story"><h2>3 张图 · 三联叙事 / 步骤 / 案例</h2><!-- Fragment: load image-composition.css after the host deck CSS. Count: 3; purpose: sequence.
+     Placeholder media is for layout planning only. Replace it before delivering a deck. -->
+<section class="slide jg-slide" data-layout="photo-03-story" data-title="把复杂过程讲成三个清楚的阶段" data-image-count="3">
+  <header class="jg-head" data-role="title-zone">
+    <span class="jg-kicker" data-editable data-field="visibleContent.kicker">03 / 三联叙事</span>
+    <h2 data-editable data-field="title">把复杂过程讲成三个清楚的阶段</h2>
+  </header>
+  <div class="jg-body jg-story"><p data-editable data-field="visibleContent.lead">每张图片对应一步，每一步配一句说明。</p><div class="jg-gallery"><figure class="jg-photo" data-role="image" data-image-slot="image-01">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 01 的示意占位"><b>01</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.0.caption">证据 01 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-02">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 02 的示意占位"><b>02</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.1.caption">证据 02 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-03">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 03 的示意占位"><b>03</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.2.caption">证据 03 · 用一句话说明它的用途</figcaption>
+</figure></div></div>
+  <footer class="jg-foot"><span data-editable data-field="visibleContent.source">示意模板 · 以实际图片和文案替换</span><span data-editable data-field="visibleContent.pageNumber">01</span></footer>
+  <aside class="notes" data-field="speakerNotes">每张图片对应一步，每一步配一句说明。顺序用编号表达，图片说明独立于图像。配色接入既有主题，不固定为蓝白色。</aside>
+</section>
+</article><article class="sample" id="photo-04-matrix"><h2>4 张图 · 四图矩阵 / 平级证据</h2><!-- Fragment: load image-composition.css after the host deck CSS. Count: 4; purpose: evidence.
+     Placeholder media is for layout planning only. Replace it before delivering a deck. -->
+<section class="slide jg-slide" data-layout="photo-04-matrix" data-title="四个案例，说明同一条规律" data-image-count="4">
+  <header class="jg-head" data-role="title-zone">
+    <span class="jg-kicker" data-editable data-field="visibleContent.kicker">04 / 四图矩阵</span>
+    <h2 data-editable data-field="title">四个案例，说明同一条规律</h2>
+  </header>
+  <div class="jg-body jg-matrix"><div class="jg-gallery"><figure class="jg-photo" data-role="image" data-image-slot="image-01">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 01 的示意占位"><b>01</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.0.caption">证据 01 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-02">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 02 的示意占位"><b>02</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.1.caption">证据 02 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-03">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 03 的示意占位"><b>03</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.2.caption">证据 03 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-04">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 04 的示意占位"><b>04</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.3.caption">证据 04 · 用一句话说明它的用途</figcaption>
+</figure></div><article class="jg-copy" data-role="text-zone">
+  <h3 data-editable data-field="visibleContent.lead">平级案例共享相同的图片尺寸和说明基线。</h3>
+  <p data-editable data-field="visibleContent.explanation">只有存在象限语义时，才给矩阵标注象限。</p>
+  <p class="jg-callout" data-editable data-field="visibleContent.takeaway"><strong>结论优先</strong><br>图片与文字共同解释一个重点。</p>
+</article></div>
+  <footer class="jg-foot"><span data-editable data-field="visibleContent.source">示意模板 · 以实际图片和文案替换</span><span data-editable data-field="visibleContent.pageNumber">01</span></footer>
+  <aside class="notes" data-field="speakerNotes">平级案例共享相同的图片尺寸和说明基线。只有存在象限语义时，才给矩阵标注象限。配色接入既有主题，不固定为蓝白色。</aside>
+</section>
+</article><article class="sample" id="photo-05-focus"><h2>5 张图 · 一主四辅 / 主次关系</h2><!-- Fragment: load image-composition.css after the host deck CSS. Count: 5; purpose: hero.
+     Placeholder media is for layout planning only. Replace it before delivering a deck. -->
+<section class="slide jg-slide" data-layout="photo-05-focus" data-title="先看核心成果，再看四项支撑" data-image-count="5">
+  <header class="jg-head" data-role="title-zone">
+    <span class="jg-kicker" data-editable data-field="visibleContent.kicker">05 / 一主四辅</span>
+    <h2 data-editable data-field="title">先看核心成果，再看四项支撑</h2>
+  </header>
+  <div class="jg-body jg-focus"><div class="jg-gallery"><figure class="jg-photo" data-role="image" data-image-slot="image-01">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 01 的示意占位"><b>01</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.0.caption">证据 01 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-02">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 02 的示意占位"><b>02</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.1.caption">证据 02 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-03">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 03 的示意占位"><b>03</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.2.caption">证据 03 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-04">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 04 的示意占位"><b>04</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.3.caption">证据 04 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-05">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 05 的示意占位"><b>05</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.4.caption">证据 05 · 用一句话说明它的用途</figcaption>
+</figure></div><p data-editable data-field="visibleContent.lead">用主图建立焦点，辅图提供不同角度的证据。</p></div>
+  <footer class="jg-foot"><span data-editable data-field="visibleContent.source">示意模板 · 以实际图片和文案替换</span><span data-editable data-field="visibleContent.pageNumber">01</span></footer>
+  <aside class="notes" data-field="speakerNotes">用主图建立焦点，辅图提供不同角度的证据。图片数量增加，正文只保留一个共同判断。配色接入既有主题，不固定为蓝白色。</aside>
+</section>
+</article><article class="sample" id="photo-06-hub"><h2>6 张图 · 六图中心围合 / 中心与支撑</h2><!-- Fragment: load image-composition.css after the host deck CSS. Count: 6; purpose: hub.
+     Placeholder media is for layout planning only. Replace it before delivering a deck. -->
+<section class="slide jg-slide" data-layout="photo-06-hub" data-title="六项能力，共同支持一个目标" data-image-count="6">
+  <header class="jg-head" data-role="title-zone">
+    <span class="jg-kicker" data-editable data-field="visibleContent.kicker">06 / 六图中心围合</span>
+    <h2 data-editable data-field="title">六项能力，共同支持一个目标</h2>
+  </header>
+  <div class="jg-body jg-hub"><div class="jg-gallery"><figure class="jg-photo" data-role="image" data-image-slot="image-01">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 01 的示意占位"><b>01</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.0.caption">证据 01 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-02">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 02 的示意占位"><b>02</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.1.caption">证据 02 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-03">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 03 的示意占位"><b>03</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.2.caption">证据 03 · 用一句话说明它的用途</figcaption>
+</figure></div><article class="jg-copy" data-role="text-zone">
+  <h3 data-editable data-field="visibleContent.lead">中心写目标，两侧的六张图解释支持关系。</h3>
+  <p data-editable data-field="visibleContent.explanation">中心是文字模块，不计入图片数量。</p>
+  <p class="jg-callout" data-editable data-field="visibleContent.takeaway"><strong>结论优先</strong><br>图片与文字共同解释一个重点。</p>
+</article><div class="jg-gallery"><figure class="jg-photo" data-role="image" data-image-slot="image-04">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 04 的示意占位"><b>04</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.3.caption">证据 04 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-05">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 05 的示意占位"><b>05</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.4.caption">证据 05 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-06">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 06 的示意占位"><b>06</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.5.caption">证据 06 · 用一句话说明它的用途</figcaption>
+</figure></div></div>
+  <footer class="jg-foot"><span data-editable data-field="visibleContent.source">示意模板 · 以实际图片和文案替换</span><span data-editable data-field="visibleContent.pageNumber">01</span></footer>
+  <aside class="notes" data-field="speakerNotes">中心写目标，两侧的六张图解释支持关系。中心是文字模块，不计入图片数量。配色接入既有主题，不固定为蓝白色。</aside>
+</section>
+</article><article class="sample" id="photo-07-cluster"><h2>7 张图 · 一主六辅 / 作品组合</h2><!-- Fragment: load image-composition.css after the host deck CSS. Count: 7; purpose: gallery.
+     Placeholder media is for layout planning only. Replace it before delivering a deck. -->
+<section class="slide jg-slide" data-layout="photo-07-cluster" data-title="一个代表作，带出六个相关成果" data-image-count="7">
+  <header class="jg-head" data-role="title-zone">
+    <span class="jg-kicker" data-editable data-field="visibleContent.kicker">07 / 一主六辅</span>
+    <h2 data-editable data-field="title">一个代表作，带出六个相关成果</h2>
+  </header>
+  <div class="jg-body jg-cluster"><figure class="jg-photo" data-role="image" data-image-slot="image-01">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 01 的示意占位"><b>01</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.0.caption">证据 01 · 用一句话说明它的用途</figcaption>
+</figure><div class="jg-gallery"><figure class="jg-photo" data-role="image" data-image-slot="image-02">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 02 的示意占位"><b>02</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.1.caption">证据 02 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-03">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 03 的示意占位"><b>03</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.2.caption">证据 03 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-04">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 04 的示意占位"><b>04</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.3.caption">证据 04 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-05">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 05 的示意占位"><b>05</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.4.caption">证据 05 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-06">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 06 的示意占位"><b>06</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.5.caption">证据 06 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-07">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 07 的示意占位"><b>07</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.6.caption">证据 07 · 用一句话说明它的用途</figcaption>
+</figure></div></div>
+  <footer class="jg-foot"><span data-editable data-field="visibleContent.source">示意模板 · 以实际图片和文案替换</span><span data-editable data-field="visibleContent.pageNumber">01</span></footer>
+  <aside class="notes" data-field="speakerNotes">面积表达重要性，辅图用规则网格保持秩序。七步流程也可使用半环，但需要阶段与说明一一对应。配色接入既有主题，不固定为蓝白色。</aside>
+</section>
+</article><article class="sample" id="photo-08-frame"><h2>8 张图 · 八图两侧围合 / 结论与证据</h2><!-- Fragment: load image-composition.css after the host deck CSS. Count: 8; purpose: evidence.
+     Placeholder media is for layout planning only. Replace it before delivering a deck. -->
+<section class="slide jg-slide" data-layout="photo-08-frame" data-title="一个结论，让八项证据来说明" data-image-count="8">
+  <header class="jg-head" data-role="title-zone">
+    <span class="jg-kicker" data-editable data-field="visibleContent.kicker">08 / 八图两侧围合</span>
+    <h2 data-editable data-field="title">一个结论，让八项证据来说明</h2>
+  </header>
+  <div class="jg-body jg-frame"><div class="jg-gallery"><figure class="jg-photo" data-role="image" data-image-slot="image-01">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 01 的示意占位"><b>01</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.0.caption">证据 01 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-02">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 02 的示意占位"><b>02</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.1.caption">证据 02 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-03">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 03 的示意占位"><b>03</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.2.caption">证据 03 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-04">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 04 的示意占位"><b>04</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.3.caption">证据 04 · 用一句话说明它的用途</figcaption>
+</figure></div><article class="jg-copy" data-role="text-zone">
+  <h3 data-editable data-field="visibleContent.lead">左右各四图，中间保留安静的文字区域。</h3>
+  <p data-editable data-field="visibleContent.explanation">资料太密时减少图片或拆页，保证证据可辨认。</p>
+  <p class="jg-callout" data-editable data-field="visibleContent.takeaway"><strong>结论优先</strong><br>图片与文字共同解释一个重点。</p>
+</article><div class="jg-gallery"><figure class="jg-photo" data-role="image" data-image-slot="image-05">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 05 的示意占位"><b>05</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.4.caption">证据 05 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-06">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 06 的示意占位"><b>06</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.5.caption">证据 06 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-07">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 07 的示意占位"><b>07</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.6.caption">证据 07 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-08">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 08 的示意占位"><b>08</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.7.caption">证据 08 · 用一句话说明它的用途</figcaption>
+</figure></div></div>
+  <footer class="jg-foot"><span data-editable data-field="visibleContent.source">示意模板 · 以实际图片和文案替换</span><span data-editable data-field="visibleContent.pageNumber">01</span></footer>
+  <aside class="notes" data-field="speakerNotes">左右各四图，中间保留安静的文字区域。资料太密时减少图片或拆页，保证证据可辨认。配色接入既有主题，不固定为蓝白色。</aside>
+</section>
+</article><article class="sample" id="photo-09-gallery"><h2>9 张图 · 九图画廊 / 平级成果</h2><!-- Fragment: load image-composition.css after the host deck CSS. Count: 9; purpose: gallery.
+     Placeholder media is for layout planning only. Replace it before delivering a deck. -->
+<section class="slide jg-slide" data-layout="photo-09-gallery" data-title="九个成果，组成一个有秩序的全景" data-image-count="9">
+  <header class="jg-head" data-role="title-zone">
+    <span class="jg-kicker" data-editable data-field="visibleContent.kicker">09 / 九图画廊</span>
+    <h2 data-editable data-field="title">九个成果，组成一个有秩序的全景</h2>
+  </header>
+  <div class="jg-body jg-gallery jg-nine"><figure class="jg-photo" data-role="image" data-image-slot="image-01">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 01 的示意占位"><b>01</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.0.caption">证据 01 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-02">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 02 的示意占位"><b>02</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.1.caption">证据 02 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-03">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 03 的示意占位"><b>03</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.2.caption">证据 03 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-04">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 04 的示意占位"><b>04</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.3.caption">证据 04 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-05">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 05 的示意占位"><b>05</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.4.caption">证据 05 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-06">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 06 的示意占位"><b>06</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.5.caption">证据 06 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-07">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 07 的示意占位"><b>07</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.6.caption">证据 07 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-08">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 08 的示意占位"><b>08</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.7.caption">证据 08 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-09">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 09 的示意占位"><b>09</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.8.caption">证据 09 · 用一句话说明它的用途</figcaption>
+</figure></div>
+  <footer class="jg-foot"><span data-editable data-field="visibleContent.source">示意模板 · 以实际图片和文案替换</span><span data-editable data-field="visibleContent.pageNumber">01</span></footer>
+  <aside class="notes" data-field="speakerNotes">统一格子、间距与说明，让图片成为信息本身。照片可整组轻微倾斜，含文字截图保持水平。配色接入既有主题，不固定为蓝白色。</aside>
+</section>
+</article><article class="sample" id="photo-10-gallery"><h2>10 张图 · 十图双排 / 成果集合</h2><!-- Fragment: load image-composition.css after the host deck CSS. Count: 10; purpose: gallery.
+     Placeholder media is for layout planning only. Replace it before delivering a deck. -->
+<section class="slide jg-slide" data-layout="photo-10-gallery" data-title="十项成果，先分组，再展示" data-image-count="10">
+  <header class="jg-head" data-role="title-zone">
+    <span class="jg-kicker" data-editable data-field="visibleContent.kicker">10 / 十图双排</span>
+    <h2 data-editable data-field="title">十项成果，先分组，再展示</h2>
+  </header>
+  <div class="jg-body jg-gallery jg-ten"><figure class="jg-photo" data-role="image" data-image-slot="image-01">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 01 的示意占位"><b>01</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.0.caption">证据 01 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-02">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 02 的示意占位"><b>02</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.1.caption">证据 02 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-03">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 03 的示意占位"><b>03</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.2.caption">证据 03 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-04">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 04 的示意占位"><b>04</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.3.caption">证据 04 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-05">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 05 的示意占位"><b>05</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.4.caption">证据 05 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-06">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 06 的示意占位"><b>06</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.5.caption">证据 06 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-07">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 07 的示意占位"><b>07</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.6.caption">证据 07 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-08">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 08 的示意占位"><b>08</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.7.caption">证据 08 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-09">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 09 的示意占位"><b>09</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.8.caption">证据 09 · 用一句话说明它的用途</figcaption>
+</figure><figure class="jg-photo" data-role="image" data-image-slot="image-10">
+  <div class="jg-media" data-fit="cover" style="--jg-focal: 50% 50%">
+    <!-- Replace this schematic with a local img, preserving the slot and adding data-asset-id and meaningful alt. -->
+    <div class="jg-placeholder" role="img" aria-label="图片 10 的示意占位"><b>10</b><span>图片占位</span></div>
+  </div>
+  <figcaption data-editable data-field="images.9.caption">证据 10 · 用一句话说明它的用途</figcaption>
+</figure></div>
+  <footer class="jg-foot"><span data-editable data-field="visibleContent.source">示意模板 · 以实际图片和文案替换</span><span data-editable data-field="visibleContent.pageNumber">01</span></footer>
+  <aside class="notes" data-field="speakerNotes">两排五列适合照片与案例封面，配短标签即可。完整界面截图含细小文字时，优先拆成两页。配色接入既有主题，不固定为蓝白色。</aside>
+</section>
+</article></main><script>
+const palettes={warm:['#f7f5f0','#282722','#68675f','#a45732','#efede6','#d7d4ca'],green:['#f3f7f4','#19362a','#536b5d','#337651','#e5efe7','#c6d7ca'],dark:['#172126','#eff4f5','#abbac0','#8fbbc2','#243238','#40545c']};
+document.querySelectorAll('[data-theme]').forEach(button=>button.addEventListener('click',()=>{const colors=palettes[button.dataset.theme];['--bg','--ink','--muted','--mint','--glass','--line'].forEach((key,i)=>document.documentElement.style.setProperty(key,colors[i]));document.querySelectorAll('[data-theme]').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));}));
+</script></body></html>
